@@ -1,0 +1,103 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artech.WCFService.Contract", "Artech.WCFService.Contract\Artech.WCFService.Contract.csproj", "{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artech.WCFService.Service", "Artech.WCFService.Service\Artech.WCFService.Service.csproj", "{391A23A0-8220-44FD-8768-B57B92F7BB22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artech.WCFService.Hosting", "Artech.WCFService.Hosting\Artech.WCFService.Hosting.csproj", "{984F9713-F87F-469A-9D59-5E16D420D7B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artech.WCFService.Client", "Artech.WCFService.Client\Artech.WCFService.Client.csproj", "{FBE5D317-2188-474B-8837-891087C23283}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WCFService-Site/WCFService", "http://localhost/WCFService", "{1E906E57-9A2C-445C-A610-B72E3D638468}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6"
+		ProjectReferences = "{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}|Artech.WCFService.Contract.dll;{391A23A0-8220-44FD-8768-B57B92F7BB22}|Artech.WCFService.Service.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/WCFService"
+		Debug.AspNetCompiler.PhysicalPath = "Artech.WCFService.ServiceSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WCFService\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/WCFService"
+		Release.AspNetCompiler.PhysicalPath = "Artech.WCFService.ServiceSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\WCFService\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "Artech.WCFService.ServiceSite\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Release|.NET = Release|.NET
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}.Release|.NET.ActiveCfg = Release|Any CPU
+		{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B35A4435-E6BF-4F86-9BF3-B60D58C2F905}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{391A23A0-8220-44FD-8768-B57B92F7BB22}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{391A23A0-8220-44FD-8768-B57B92F7BB22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{391A23A0-8220-44FD-8768-B57B92F7BB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{391A23A0-8220-44FD-8768-B57B92F7BB22}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{391A23A0-8220-44FD-8768-B57B92F7BB22}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{391A23A0-8220-44FD-8768-B57B92F7BB22}.Release|.NET.ActiveCfg = Release|Any CPU
+		{391A23A0-8220-44FD-8768-B57B92F7BB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{391A23A0-8220-44FD-8768-B57B92F7BB22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{391A23A0-8220-44FD-8768-B57B92F7BB22}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{391A23A0-8220-44FD-8768-B57B92F7BB22}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{984F9713-F87F-469A-9D59-5E16D420D7B3}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{984F9713-F87F-469A-9D59-5E16D420D7B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{984F9713-F87F-469A-9D59-5E16D420D7B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{984F9713-F87F-469A-9D59-5E16D420D7B3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{984F9713-F87F-469A-9D59-5E16D420D7B3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{984F9713-F87F-469A-9D59-5E16D420D7B3}.Release|.NET.ActiveCfg = Release|Any CPU
+		{984F9713-F87F-469A-9D59-5E16D420D7B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{984F9713-F87F-469A-9D59-5E16D420D7B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{984F9713-F87F-469A-9D59-5E16D420D7B3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{984F9713-F87F-469A-9D59-5E16D420D7B3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FBE5D317-2188-474B-8837-891087C23283}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{FBE5D317-2188-474B-8837-891087C23283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBE5D317-2188-474B-8837-891087C23283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBE5D317-2188-474B-8837-891087C23283}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FBE5D317-2188-474B-8837-891087C23283}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FBE5D317-2188-474B-8837-891087C23283}.Release|.NET.ActiveCfg = Release|Any CPU
+		{FBE5D317-2188-474B-8837-891087C23283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBE5D317-2188-474B-8837-891087C23283}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBE5D317-2188-474B-8837-891087C23283}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FBE5D317-2188-474B-8837-891087C23283}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Debug|.NET.Build.0 = Debug|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Release|.NET.ActiveCfg = Debug|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Release|.NET.Build.0 = Debug|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1E906E57-9A2C-445C-A610-B72E3D638468}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

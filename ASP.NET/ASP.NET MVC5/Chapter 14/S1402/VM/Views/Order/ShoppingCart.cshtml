@@ -1,0 +1,54 @@
+﻿@model ShoppingCart
+<div class="shoppingCart">
+    <table cellspacing="0">
+        <tr>
+            <th>片名</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>金额</th>
+            <th></th>
+        </tr>
+        @foreach (ShoppingCartItem cartItem in this.Model.Items)
+        {
+            <tr>
+                <td>@Html.RouteLink(@cartItem.ProductName, "ProductDetail", new { ProductName = @cartItem.ProductName, ProductId = @cartItem.ProductId })
+                </td>
+                <td>
+                    ￥@cartItem.Price.ToString("#0.00")
+                </td>
+                <td>@cartItem.Quantity
+                </td>
+                <td>
+                    ￥@cartItem.SubTotalPrice.ToString("#0.00")
+                </td>
+                <td>
+                    <form action="@Url.RouteUrl("Remove")" method="post">
+                    @Html.Hidden("productId", cartItem.ProductId)
+                    <input type="submit" value="" class="remove" />
+                    </form>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="3"></td>
+            <td><b>总价：￥@this.Model.TotalPrice.ToString("#0.00")</b></td>
+            <td></td>
+        </tr>
+    </table>
+    <div class="left">
+        @Html.ValidationSummary()<div style="clear: both">
+        </div>
+    </div>
+    <div class="right">
+        <div>
+            <img src="@Url.Content("~/Content/images/continueshopping.jpg")" alt=""/>
+            @Html.RouteLink("继续购物", "Home")</div>
+        @if (ShoppingCartBinder.GetShoppingCart().TotalQuantity > 0)
+        { 
+            <div>
+                <img src="@Url.Content("~/Content/images/payment.jpg")" alt="" />
+                @Html.RouteLink("结账支付", "CheckOut")
+            </div>
+        }
+    </div>
+</div>

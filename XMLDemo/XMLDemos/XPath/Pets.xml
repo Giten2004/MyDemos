@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<pets>
+	<cat color="black" weight="10" count="4">
+		<price>100</price>
+		<desc>this is a black cat</desc>
+	</cat>
+	<cat color="white" weight="9" count="5">
+		<price>80</price>
+		<desc>this is a white cat</desc>
+	</cat>
+	<cat color="yellow" weight="15" count="1">
+		<price>110</price>
+		<desc>this is a yellow cat</desc>
+	</cat>
+	<dog color="black" weight="10" count="7">
+		<price>114</price>
+		<desc>this is a black dog</desc>
+	</dog>
+	<dog color="white" weight="9" count="4">
+		<price>80</price>
+		<desc>this is a white dog</desc>
+	</dog>
+	<dog color="yellow" weight="15" count="15">
+		<price>80</price>
+		<desc>this is a yellow dog</desc>
+	</dog>
+	<pig color="white" weight="100" count="2">
+		<price>8000</price>
+		<desc>this is a white pig</desc>
+	</pig>
+</pets>

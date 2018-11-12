@@ -1,0 +1,14 @@
+﻿@model MvcApp.Models.Contact
+<html>
+<head>
+    <title>修改Contact信息</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.EditorForModel()
+        @Html.EditorFor(m => m.Address)
+        <input type="submit" value="保存" />
+    }
+</body>
+</html>

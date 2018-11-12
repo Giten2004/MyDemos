@@ -1,0 +1,40 @@
+﻿@model MvcApp.Models.Employee
+<html>
+<head>
+    <title>编辑员工信息</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>@Html.LabelFor(m => m.Name)</td>
+            <td>
+                @Html.EditorFor(m => m.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Gender)</td>
+            <td>
+                @Html.EditorFor(m => m.Gender)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Education)</td>
+            <td>
+                @Html.EditorFor(m => m.Education)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Departments)</td>
+            <td>
+                @Html.EditorFor(m => m.Departments)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Skills)</td>
+            <td>
+                @Html.EditorFor(m => m.Skills)
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

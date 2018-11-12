@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DB653420-0298-453C-8F16-340EE09A5E54}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServiceModelEx</RootNamespace>
+    <AssemblyName>ServiceBusExplorer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ApplicationIcon>IDesign.ico</ApplicationIcon>
+    <PublishUrl>http://localhost/ServiceBusExplorer/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel><UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel><UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ServiceBus, Version=0.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dialog Boxes\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog Boxes\AboutBox.designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RouterSubscriberControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RouterSubscriberControl.Designer.cs">
+      <DependentUpon>RouterSubscriberControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EndpointViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EndpointViewControl.Designer.cs">
+      <DependentUpon>EndpointViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BufferViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BufferViewControl.Designer.cs">
+      <DependentUpon>BufferViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RouterViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RouterViewControl.Designer.cs">
+      <DependentUpon>RouterViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NamespaceViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NamespaceViewControl.Designer.cs">
+      <DependentUpon>NamespaceViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NodeViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NodeViewControl.Designer.cs">
+      <DependentUpon>NodeViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog Boxes\NewQueueDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog Boxes\NewQueueDialog.Designer.cs">
+      <DependentUpon>NewQueueDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog Boxes\NewRouterDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog Boxes\NewRouterDialog.Designer.cs">
+      <DependentUpon>NewRouterDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\EndpointTreeNode.cs" />
+    <Compile Include="Nodes\RouterSubscriberTreeNode.cs" />
+    <Compile Include="Nodes\QueueTreeNode.cs" />
+    <Compile Include="Nodes\RouterTreeNode.cs" />
+    <Compile Include="Nodes\ServiceBusTreeNode.cs" />
+    <Compile Include="ExplorerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExplorerForm.Designer.cs">
+      <DependentUpon>ExplorerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog Boxes\LogonDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog Boxes\LogonDialog.Designer.cs">
+      <DependentUpon>LogonDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\NamespaceTreeNode.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialog Boxes\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RouterSubscriberControl.resx">
+      <DependentUpon>RouterSubscriberControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EndpointViewControl.resx">
+      <DependentUpon>EndpointViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BufferViewControl.resx">
+      <DependentUpon>BufferViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RouterViewControl.resx">
+      <DependentUpon>RouterViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NamespaceViewControl.resx">
+      <DependentUpon>NamespaceViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NodeViewControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NodeViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog Boxes\NewQueueDialog.resx">
+      <DependentUpon>NewQueueDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog Boxes\NewRouterDialog.resx">
+      <DependentUpon>NewRouterDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExplorerForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ExplorerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog Boxes\LogonDialog.resx">
+      <DependentUpon>LogonDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog Boxes\SplashScreen.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Dialog Boxes\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Service.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Binding.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ServiceError.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_16x.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SolutionError.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EventEndpoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IDesign.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Discover.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\About.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Progress.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IDesign.ico" />
+    <None Include="Resources\Router.bmp" />
+    <None Include="Resources\Endpoint.bmp" />
+    <None Include="Resources\Queue1.bmp" />
+    <None Include="Resources\Queue2.bmp" />
+    <None Include="Resources\DeleteRouter.bmp" />
+    <Content Include="Resources\searchweb.ico" />
+    <Content Include="Resources\Logon.ico" />
+    <Content Include="Resources\Disconnected.ico" />
+    <Content Include="Resources\keys.ico" />
+    <Content Include="Resources\otheroptions.ico" />
+    <Content Include="Resources\message_small.png" />
+    <Content Include="Resources\Policy.ico" />
+    <Content Include="Resources\Refresh.bmp" />
+    <Content Include="Resources\SingleMessage.ico" />
+    <None Include="Resources\Solution.bmp" />
+    <Content Include="Resources\Users.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VisualBasic.PowerPacks.10.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Basic PowerPacks 10.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ServiceModelEx\ServiceModelEx.csproj">
+      <Project>{0858C710-AF53-4049-B98E-CFE3638D1228}</Project>
+      <Name>ServiceModelEx</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath) "    "C:\Program Files\IDesign\"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

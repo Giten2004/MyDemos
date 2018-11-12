@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd  
+           http://www.springframework.org/schema/aop  
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="say" class="com.tutorialspoint.SpringAOP.SayHello">
+        <property name="name" value="fengsigaoju"/>
+    </bean>
+    <bean id="bf" class="com.tutorialspoint.SpringAOP.BeforeSay"/>
+    <bean id="af" class="com.tutorialspoint.SpringAOP.AfterSay"/>
+
+    <aop:config>
+        <aop:aspect ref="bf">
+            <aop:before method="beforesay"
+                        pointcut="execution(* com.tutorialspoint.SpringAOP.SayHello.say(..))"/>
+        </aop:aspect>
+        <aop:aspect ref="af">
+            <aop:after method="aftersay" pointcut="execution(* com.tutorialspoint.SpringAOP.SayHello.say(..))"/>
+        </aop:aspect>
+    </aop:config>
+
+    <!--定义切面 指定拦截方法时 做什么-->
+    <bean id="userService" class="com.tutorialspoint.SpringAOP.UserService"/>
+    <bean id="xmlAopDemoUserLog" class="com.tutorialspoint.SpringAOP.XmlAopDemoUserLog"/>
+
+    <aop:config>
+        <aop:aspect ref="xmlAopDemoUserLog">
+            <!--定义切点-->
+            <aop:pointcut id="logpoint"
+                          expression="execution(* com.tutorialspoint.SpringAOP.UserService.getDemoUser(..))"/>
+            <!--定义连接点-->
+            <aop:before pointcut-ref="logpoint" method="beforeLog"/>
+            <aop:after pointcut-ref="logpoint" method="afterLog"/>
+            <aop:after-returning pointcut-ref="logpoint" method="afterReturningLog"/>
+            <aop:after-throwing pointcut-ref="logpoint" method="afterThrowingLog"/>
+        </aop:aspect>
+    </aop:config>
+</beans>   

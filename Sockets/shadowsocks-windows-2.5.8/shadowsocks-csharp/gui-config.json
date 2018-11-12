@@ -1,0 +1,28 @@
+{
+  "configs": [
+    {
+      "server": "47.88.84.225",
+      "server_port": 443,
+      "password": "123@Fuxx",
+      "method": "aes-256-cfb",
+      "remarks": ""
+    },
+    {
+      "server": "133.130.100.252",
+      "server_port": 443,
+      "password": "123@Fuxx",
+      "method": "aes-256-cfb",
+      "remarks": ""
+    }
+  ],
+  "strategy": null,
+  "index": 0,
+  "global": false,
+  "enabled": true,
+  "shareOverLan": false,
+  "isDefault": false,
+  "localPort": 1080,
+  "pacUrl": null,
+  "useOnlinePac": false,
+  "availabilityStatistics": false
+}

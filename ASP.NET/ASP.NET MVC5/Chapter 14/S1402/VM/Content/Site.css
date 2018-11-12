@@ -1,0 +1,416 @@
+﻿body   
+{
+    background: #b6b7bc;
+    font-size: .80em;   
+    font-family:Microsoft YaHei;
+    margin: 0px;
+    padding: 0px;
+    color: #000000;
+}
+.page
+{
+    width: 960px;
+    background-color: #fff;
+    margin: 20px auto 20px auto;
+    border: 1px solid #000000;
+    padding-top:0px;
+}
+
+.header
+{
+    margin-top:0px;
+    height:200px;
+    width: 100%;
+    background-image: url(images/Al_Pacino.png);
+    border:1px solid #000000;
+}
+.main
+{
+    padding: 0px 12px;    
+    min-height: 420px;
+}
+
+.paging
+{
+    float:right;
+    margin:auto 20px;    
+}
+
+.paging a
+{
+    margin: auto 5px auto auto;
+    width: 20px;
+    font-size: 1.1em;
+    text-decoration:none;
+    padding: 0 .4em 0 .4em;
+}
+    
+.paging a.selected
+{
+    color: #FFF;
+    background-color:#000;     
+}
+
+.footer
+{
+    font-size:0.8em;    
+    color:#000;
+    width:250px;
+    margin:50px auto 10px auto;
+}
+.footer a
+{
+   color:#000;
+   text-decoration: none;
+}
+
+.footer .copyRight
+{
+    float: right;    
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+fieldset 
+{
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
+}
+
+legend 
+{
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea 
+{
+    min-height: 00px;
+    font-size: .80em;   
+    font-family:Microsoft YaHei;
+}
+
+.editor-label 
+{
+    margin: 1em 0 0 0;
+}
+
+.editor-field 
+{
+    margin:0.5em 0 0 0;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-family:Microsoft YaHei;
+    font-weight:bolder;
+    color: #ff0000;
+    margin: auto auto auto 50px;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/*-----------------------------------------------------------*/
+ul.products
+{
+    padding:0px 20px 0px 10px;
+}
+ul.products li
+{
+    list-style-type: none;    
+    border-bottom:1px dashed #000000;
+    margin:10px auto;    
+}
+
+ul.products li span
+{
+    margin:auto 10px auto auto; 
+}
+ul.products li .title
+{
+    font-size:1.3em;
+    font-weight:bold;
+    color: #000;
+}
+ul.products li .title a
+{    
+    color: #000;
+    text-decoration:none;
+}
+ul.products li label
+{
+    font-weight:bold;
+}
+ul.products li img.poster
+{
+    float:left;
+    width: 120px;
+    height: 136px;   
+    margin: auto 10px; 
+}
+.addToShoppingCart
+{
+    float:right;
+}
+.addToShoppingCart span
+{
+    float:left;  
+}
+.addToShoppingCart input
+{
+    margin:auto 10px auto 20px;
+    width:71px;
+    border-style:none;
+    float:left;        
+    background-color:#ffffff;
+    color:#000000;
+    background-image:url("images/add-to-cart.gif");
+}
+
+.productDetail
+{
+    margin: 20px 10px;    
+}
+
+.productDetail img.poster
+{
+    float:left;
+    width: 160px;
+    height: 180px;   
+    margin: auto 10px; 
+}
+
+.productDetail span
+{
+    margin: auto 10px auto auto;    
+}
+
+.productDetail .title
+{
+    font-size:1.3em;
+    font-weight:bold;
+    color: #000;
+}
+
+.productDetail label
+{
+    font-weight:bold;
+}
+
+li.nav
+{
+  list-style-type: none;     
+  float: left;    
+  margin:0px;
+  padding:0px 10px 0px 10px;
+  border-left:1px solid gray;
+}
+
+li.first
+{
+    border-left-style:none;    
+}
+
+ul.nav
+{
+    display:block;
+    float:right;
+    margin:20px;
+}
+
+img.icon
+{
+    float: right;
+    width:20px;
+    height:20px;  
+    margin:auto auto auto 5px;  
+}
+a.iconText
+{
+    color:Yellow;
+    text-decoration:none;
+}
+div.shoppingCart
+{
+    width: 600px;
+    margin: 10px auto;
+    border: 1px solid #000000;
+    text-align: right;
+    font-size:small;
+}
+
+div.shoppingCart table
+{
+    width: 100%;
+}
+
+div.shoppingCart table th
+{
+    font-size:1.0em;
+    background-color: Gray;
+    color: #ffffff;
+}
+input.remove
+{
+    background-image:url("images/remove.jpg");
+    border-style:none;
+    background-color:#ffffff;
+    width: 24px;
+    cursor: pointer;
+}
+div.shoppingCart .left
+{
+  width:500px;
+  height:80px;
+  float:left;
+  overflow:hidden;
+  font-weight:bold;
+}
+
+div.shoppingCart .left li
+{
+   list-style-type: none;    
+}
+
+div.shoppingCart .right
+{
+   width:80px;
+   float :left;   
+   overflow:hidden;   
+   margin-top:10px;
+}
+
+div.login
+{
+    width:340px;
+    margin:50px auto;
+    padding:0px;    
+}
+div.login .title
+{
+    height:30px;
+    background-color: Gray;    
+    margin:0px;
+}
+
+div.login input.button
+{
+    margin:10px 0px;
+    float:right    
+}
+.textBox
+{
+   width: 300px;
+   font-size: 1.0em;   
+    font-family:Microsoft YaHei;
+   border: 1px solid #000000;
+}
+
+.button
+{
+    width:100px;
+    height:30px;
+    color:#FFFFFF;
+    background-color:#000000;   
+    border:1px solid Green; 
+    font-size: 1.0em;
+    font-family: Microsoft YaHei
+}
+td.left label
+{
+   display:block;
+   float:right;
+   font-weight:bold;
+}
+
+.long
+{
+    width:600px;    
+}
+
+.middle
+{
+    width:200px;    
+}
+
+.short
+{
+    width:100px;    
+}
+
+#product
+{
+    margin-bottom:20px;
+}
+
+#product tr.lastLine td
+{
+    text-align:center;
+}
+
+a.button
+{
+   padding:2px 20px 2px 20px;
+   text-decoration:none;
+}
+
+div.addButton
+{
+    width:100px;
+    margin:10px auto;    
+}
+div.checkOut
+{
+    width: 500px;
+    margin: 10px auto;
+    border: 1px solid #000000;
+    text-align: right;
+    font-size:small;
+}
+
+div.checkOut .top
+{
+    width:100%;
+    height:30px;
+    background-color: Gray; 
+}
+
+div.checkOut .content
+{
+    display:block;
+    text-align:center;   
+    color:Red;
+    font-weight:bold;
+}
+
+.error
+{
+    color:Red;
+}
+.label
+{
+    font-weight:bold;    
+}

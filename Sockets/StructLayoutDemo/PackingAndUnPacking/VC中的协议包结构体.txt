@@ -1,0 +1,12 @@
+﻿下面是附带VC中的协议包结构体：
+
+typedef struct PACKETHEAD
+{
+char HEAD[2];
+char LENGTH[10]; 
+char ISZIP[1];
+char PACKTYPE[1];
+char SERVICE[4];
+char PARAMENT[100];
+char TAIL[2];
+}PacketHead,*LPPacketHead;

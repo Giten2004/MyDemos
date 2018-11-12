@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="http://codepen.io/edbond88/pen/CcgvA.css" media="screen" rel="stylesheet" type="text/css" />
+        <style>
+        body {
+          background: rgba(222,222,222,1);
+          margin: 20px;
+        }
+        </style>
+    </head>
+
+    <body>
+      <h1>Django Note Taking App</h1>
+
+      {% for note in notes.all %}
+        <aside class="note-wrap note-white">
+          <li>{{ note.text }}</li>
+        </aside>
+      {% endfor %}
+
+    <form method='POST' action=''>{% csrf_token %}
+        {{ form.as_p }}
+        <input type='submit' value='Add note'>
+    </form>
+
+    </body>
+</html>

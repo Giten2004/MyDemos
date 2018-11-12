@@ -1,0 +1,32 @@
+﻿@model Person
+<html>
+<head>
+    <title>编辑人员信息</title>
+    <link rel="stylesheet" href="/Content/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/site.css" />
+</head>
+<body>
+@using (Html.BeginForm())
+{ 
+    <div>@Html.LabelFor(m=>m.Name)</div>
+    <div>
+        @Html.EditorFor(m=>m.Name)
+        @Html.ValidationMessageFor(m=>m.Name)
+    </div>
+        
+    <div>@Html.LabelFor(m=>m.Gender)</div>
+    <div>
+        @Html.EditorFor(m => m.Gender)
+        @Html.ValidationMessageFor(m => m.Gender)
+    </div>
+        
+    <div>@Html.LabelFor(m=>m.Age)</div>
+    <div>
+        @Html.EditorFor(m => m.Age)
+        @Html.ValidationMessageFor(m => m.Age)
+    </div>
+        
+    <input type="submit" value="保存"/>
+}
+</body>
+</html>

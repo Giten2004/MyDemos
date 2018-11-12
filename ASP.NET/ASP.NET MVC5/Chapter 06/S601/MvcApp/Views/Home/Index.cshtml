@@ -1,0 +1,23 @@
+﻿@model NameValueCollectionValueProvider
+<html>
+<head>
+    <title>指定前缀的Key</title>
+    <link rel="stylesheet" href="~/content/bootstrap.css"/>
+    <link rel="stylesheet" href="~/content/site.css" />
+</head>
+<body>
+    <table class="table table-bordered" >
+        <tr><th colspan="2">foo</th></tr>
+        @foreach (var item in Model.GetKeysFromPrefix("foo"))
+        {
+            <tr><td>@item.Key</td><td>@item.Value</td></tr>
+        }
+
+        <tr><th colspan="2">foo.Address</th></tr>
+        @foreach (var item in Model.GetKeysFromPrefix("foo.Address"))
+        {
+            <tr><td>@item.Key</td><td>@item.Value</td></tr>
+        }
+    </table>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementformdefault="qualified" xmlns:xs="http://www.w3.org/2001/xmlschema" xmlns:tns="http://www.xxx.com/xxxsystem">
+	<xs:annotation>
+		<xs:documentation> 本文档定义persons.xml的格式 </xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation>姓名</xs:documentation>
+	</xs:annotation>
+	<xs:simpletype name="t_name">
+		<xs:restriction base="xs:string">
+			<xs:minlength value="2"/>
+			<xs:maxlength value="4"/>
+		</xs:restriction>
+	</xs:simpletype>
+	<xs:annotation>
+		<xs:documentation>年龄</xs:documentation>
+	</xs:annotation>
+	<xs:simpletype name="t_age">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[1-9][0-9]?|1[01][0-9]|120"/>
+		</xs:restriction>
+	</xs:simpletype>
+	<xs:annotation>
+		<xs:documentation>属性id</xs:documentation>
+	</xs:annotation>
+	<xs:simpletype name="t_id">
+		<xs:restriction base="xs:int"/>
+	</xs:simpletype>
+	<xs:element name="persons">
+		<xs:complextype>
+			<xs:sequence>
+				<xs:element name="person" maxoccurs="unbounded" type="tns:t_person"/>
+			</xs:sequence>
+		</xs:complextype>
+	</xs:element>
+	<xs:complextype name="t_person">
+		<xs:sequence>
+			<xs:element name="name" type="tns:t_name"/>
+			<xs:element name="age" type="tns:t_age"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="tns:t_id" use="required"/>
+	</xs:complextype>
+</xs:schema>

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "ErrorHandlerAttribute\Client\Client.csproj", "{4084EBCE-7221-4B05-936C-C95B09C9E5C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "ErrorHandlerAttribute\Service\Service.csproj", "{84A55A8B-9FD3-49E2-A2B8-C6F036843C57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogbookViewer", "LogbookViewer\LogbookViewer.csproj", "{891F3CCC-0331-4775-AD74-BB71A53D75C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogbookService", "LogbookService\LogbookService.csproj", "{01115583-14DC-4D94-8159-308E82BA3007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceModelEx", "..\..\ServiceModelEx\ServiceModelEx.csproj", "{0858C710-AF53-4049-B98E-CFE3638D1228}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Design|Any CPU = Design|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4084EBCE-7221-4B05-936C-C95B09C9E5C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4084EBCE-7221-4B05-936C-C95B09C9E5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4084EBCE-7221-4B05-936C-C95B09C9E5C4}.Design|Any CPU.ActiveCfg = Debug|Any CPU
+		{4084EBCE-7221-4B05-936C-C95B09C9E5C4}.Design|Any CPU.Build.0 = Debug|Any CPU
+		{4084EBCE-7221-4B05-936C-C95B09C9E5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4084EBCE-7221-4B05-936C-C95B09C9E5C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84A55A8B-9FD3-49E2-A2B8-C6F036843C57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84A55A8B-9FD3-49E2-A2B8-C6F036843C57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84A55A8B-9FD3-49E2-A2B8-C6F036843C57}.Design|Any CPU.ActiveCfg = Debug|Any CPU
+		{84A55A8B-9FD3-49E2-A2B8-C6F036843C57}.Design|Any CPU.Build.0 = Debug|Any CPU
+		{84A55A8B-9FD3-49E2-A2B8-C6F036843C57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84A55A8B-9FD3-49E2-A2B8-C6F036843C57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{891F3CCC-0331-4775-AD74-BB71A53D75C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{891F3CCC-0331-4775-AD74-BB71A53D75C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{891F3CCC-0331-4775-AD74-BB71A53D75C0}.Design|Any CPU.ActiveCfg = Debug|Any CPU
+		{891F3CCC-0331-4775-AD74-BB71A53D75C0}.Design|Any CPU.Build.0 = Debug|Any CPU
+		{891F3CCC-0331-4775-AD74-BB71A53D75C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{891F3CCC-0331-4775-AD74-BB71A53D75C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01115583-14DC-4D94-8159-308E82BA3007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01115583-14DC-4D94-8159-308E82BA3007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01115583-14DC-4D94-8159-308E82BA3007}.Design|Any CPU.ActiveCfg = Debug|Any CPU
+		{01115583-14DC-4D94-8159-308E82BA3007}.Design|Any CPU.Build.0 = Debug|Any CPU
+		{01115583-14DC-4D94-8159-308E82BA3007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01115583-14DC-4D94-8159-308E82BA3007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Design|Any CPU.ActiveCfg = Design|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Design|Any CPU.Build.0 = Design|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0858C710-AF53-4049-B98E-CFE3638D1228}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

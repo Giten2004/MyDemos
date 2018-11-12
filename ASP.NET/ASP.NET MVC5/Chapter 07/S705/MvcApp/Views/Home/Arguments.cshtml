@@ -1,0 +1,17 @@
+﻿@model IDictionary<string, object>
+<html>
+<head>
+    <title>绑定的参数</title>
+    <link rel="stylesheet" href="~/content/bootstrap.css" />
+    <link rel="stylesheet" href="~/content/site.css" />
+</head>
+<body>
+    <table class="table table-bordered" >
+        <tr><th>Name</th><th>Value</th></tr>
+        @foreach (var item in Model)
+        {
+            <tr><td>@item.Key</td><td>@item.Value</td></tr>
+        }
+    </table>
+</body>
+</html>

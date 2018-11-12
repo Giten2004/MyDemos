@@ -1,0 +1,99 @@
+﻿extends layout
+
+block content
+  .jumbotron
+    h1 Express
+    #carousel-example-generic.carousel.slide(data-ride='carousel')
+      ol.carousel-indicators
+        li.active(data-target='#carousel-example-generic', data-slide-to='0')
+        |         
+        li(data-target='#carousel-example-generic', data-slide-to='1')
+        |         
+        li(data-target='#carousel-example-generic', data-slide-to='2')
+        |         
+        li(data-target='#carousel-example-generic', data-slide-to='3')
+        |         
+        li(data-target='#carousel-example-generic', data-slide-to='4')
+        |         
+        li(data-target='#carousel-example-generic', data-slide-to='5')
+        |         
+        li(data-target='#carousel-example-generic', data-slide-to='6')
+        |         
+        li(data-target='#carousel-example-generic', data-slide-to='7')
+        |         
+        li(data-target='#carousel-example-generic', data-slide-to='8')
+        |         
+        li(data-target='#carousel-example-generic', data-slide-to='9')
+      // Wrapper for slides
+      .carousel-inner(style='text-align:center;', role='listbox')
+        .item.active
+          img(src='/images//slider-img1.png')
+          |             
+          .carousel-caption
+            | Anders Hejlsberg
+        |         
+        .item
+          img(src='/images//slider-img2.png', alt='微软+NoSQL+高级架构+口语 实战训练营 第9期 上海交大科技园 火爆开幕')
+          |             
+          .carousel-caption
+            | test
+        |         
+        .item
+          img(src='/images/2.jpg')
+          |             
+          .carousel-caption
+            | 2
+        |         
+        .item
+          img(src='/images/3.jpg')
+          |             
+          .carousel-caption
+            | 3
+        |         
+        .item
+          img(src='/images/4.jpg')
+          |             
+          .carousel-caption
+            | 4
+        |         
+        .item
+          img(src='/images/5.jpg')
+          |             
+          .carousel-caption
+            | 5
+        |         
+        .item
+          img(src='/images/6.jpg')
+          |             
+          .carousel-caption
+            | 6
+        // Controls
+      a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+        span.glyphicon.glyphicon-chevron-left(aria-hidden='false')
+        |         
+        span.sr-only &#x524D;&#x4E00;&#x4E2A;
+      |     
+      a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='next')
+        span.glyphicon.glyphicon-chevron-right(aria-hidden='false')
+        |         
+        span.sr-only &#x4E0B;&#x4E00;&#x4E2A;
+
+    p.lead Express is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.
+    p
+      a.btn.btn-primary.btn-large(href='http://expressjs.com/') Learn more &raquo;
+  .row
+    .col-md-4
+      h2 Getting started
+      p Express gives you a powerful, patterns-based way to build dynamic websites that enables a clean separation of concerns and gives you full control over markup for enjoyable, agile development.
+      p
+        a.btn.btn-default(href='http://expressjs.com/') Learn more &raquo;
+    .col-md-4
+      h2 Get more libraries
+      p Node Packaged Modules is a repository of software for Node.js.
+      p
+        a.btn.btn-default(href='https://www.npmjs.org/') Learn more &raquo;
+    .col-md-4
+      h2 Microsoft Azure
+      p You can easily publish to Microsoft Azure using Node.js Tools for Visual Studio. Find out how you can host your application using a free trial today.
+      p
+        a.btn.btn-default(href='http://azure.microsoft.com') Learn more &raquo;

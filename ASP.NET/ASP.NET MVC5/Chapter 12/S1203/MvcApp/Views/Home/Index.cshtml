@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Filter>
+<html>
+<head>
+    <title>Filters</title>
+    <link rel="stylesheet" href="/Content/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/site.css" />
+</head>
+<body>
+    <table class="table table-bordered">
+        <tr><th>Instance</th><th>Order</th><th>Scope</th></tr>
+        @foreach (Filter filter in Model)
+        {
+            <tr>
+                <td>@filter.Instance.GetType().Name</td>
+                <td>@filter.Order</td>
+                <td>@filter.Scope</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

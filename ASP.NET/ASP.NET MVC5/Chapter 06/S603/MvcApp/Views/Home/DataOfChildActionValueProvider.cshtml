@@ -1,0 +1,35 @@
+﻿@using MvcApp
+@model ChildActionValueProvider
+@{
+    var dictionary1 = this.Model.GetDataSource();
+}
+<table class="table table-bordered">
+    <tr>
+        <th>Key</th>
+        <th colspan="2">Value</th>
+    </tr>
+    @foreach (var item1 in dictionary1)
+    {
+        DictionaryValueProvider<object> valueProvider = item1.Value.RawValue as DictionaryValueProvider<object>;
+        if (null == valueProvider)
+        {
+            <tr>
+                <td>@item1.Key</td>
+                <td colspan="2">@item1.Value.RawValue</td>
+            </tr>
+        }
+        else
+        {
+            var dictionary2 = valueProvider.GetDataSource();
+            <tr>
+                <td rowspan="@(dictionary2.Count + 1)">@item1.Key</td>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+            foreach (var item2 in dictionary2)
+            {
+                <tr><td>@item2.Key</td><td>@item2.Value.RawValue</td></tr>
+            }
+        }
+    }
+</table>

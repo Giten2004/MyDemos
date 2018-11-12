@@ -1,0 +1,131 @@
+﻿<Window x:Class="ComputeSalary.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComputeSalary"
+        mc:Ignorable="d"
+        Title="ComputeSalary"
+        Height="500" Width="660"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="100"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" FlowDirection="LeftToRight" >
+            <Label Content="税前工资"/>
+            <TextBox x:Name="txtSalaryBeforeTaxes" Text="16000"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <Label Content="养老汇缴基数"/>
+                <TextBox x:Name="txtSocialSecurityBase" Text="15130"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <Label Content="医疗汇缴基数"/>
+                <TextBox x:Name="txtMedicalBase" Text="14370"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <Label Content="住房公积金汇缴基数(月缴存基数上限19321元)"/>
+                <TextBox x:Name="txtHousingFundBase" Text="13500"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <Label Content="个人应缴部分：" Margin="100,0,0,0"/>
+                <Label Content="单位应缴部分：" Margin="100,0,0,0"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="4" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <Label Content="养老保险(%)："/>
+                <TextBox x:Name="txtSocialSecurityPersonalRatio" Text="8" />
+                <TextBox x:Name="txtSocialSecurityCompanyRatio" Text="19" Margin="200,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="5" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <Label Content="医疗保险(%)："/>
+                <TextBox x:Name="txtMedicalPersonalRatio" Text="2" />
+                <TextBox x:Name="txtMedicalCompanyRatio" Text="6.50" Margin="200,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="6" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <Label Content="失业保险(%)："/>
+                <TextBox x:Name="txtUnemploymentPersonalRatio" Text="0.40" />
+                <TextBox x:Name="txtUnemploymentCompanyRatio" Text="0.60" Margin="200,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="7" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <Label Content="工伤保险(%)："/>
+                <TextBox x:Name="txtOccupationalInjuryPersonalRatio" Text="0" />
+                <TextBox x:Name="txtOccupationalInjuryCompanyRatio" Text="0.224" Margin="200,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="8" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <Label Content="生育保险(%)："/>
+                <TextBox x:Name="txtMaternityPersonalRatio" Text="0" />
+                <TextBox x:Name="txtMaternityCompanyRatio" Text="0.50" Margin="200,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="9" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <Label Content="大病保险(%)："/>
+                <TextBox x:Name="txtCriticalIllnessPersonalRatio" Text="0" />
+                <TextBox x:Name="txtCriticalIllnessCompanyRatio" Text="1" Margin="200,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="10" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <Label Content="住房公积金(%)："/>
+                <TextBox x:Name="txtHousingFundPersonalRatio" Text="12"/>
+                <TextBox x:Name="txtHousingFundCompanyRatio" Text="12" Margin="185,0,0,0"/>
+            </StackPanel>
+
+            <WrapPanel Grid.Row="11" Orientation="Horizontal" FlowDirection="LeftToRight" >
+                <RadioButton Content="上限" VerticalAlignment="Center" x:Name="btnUpLimit" Click="btnUpLimit_Click"/>
+                <RadioButton Content="下限" VerticalAlignment="Center" x:Name="btnDownLimit" Click="btnDownLimit_Click"/>
+                <Button x:Name="btnCompute" Content="计算" Margin="20,0,0,0" Width="100" Click="btnCompute_Click"/>
+
+                <Label Content="个人五险一金合计金额："/>
+                <Label x:Name="txtPersonalSum"/>
+               
+                <Label Content="公司五险一金缴纳金额："/>
+                <Label x:Name="txtCompanySum"/>
+
+                <Label Content="公积金收入"/>
+                <Label x:Name="txtHouseFundingIncome"/>
+
+                <Label Content="税后:"/>
+                <Label x:Name="txtSalaryAfterTaxes"/>
+
+                <Label Content="交税:"/>
+                <Label x:Name="txtSalaryTaxes"/>
+
+                <Label Content="公司用人成本:"/>
+                <Label x:Name="txtCompanyPay"/>
+            </WrapPanel>
+
+        </Grid>
+    </Grid>
+</Window>

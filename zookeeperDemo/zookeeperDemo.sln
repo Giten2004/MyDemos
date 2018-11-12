@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zookeeperDemo", "zookeeperDemo\zookeeperDemo.csproj", "{BEF888FD-409A-41E5-92E0-C4ECF5FF52D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterWorker", "MasterWorker\MasterWorker.csproj", "{89D8DA90-9E88-43C2-87C9-C502A140C1A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zkLegacy", "zkLegacy\zkLegacy.csproj", "{70998305-B7AA-4A77-A083-235EA006CDC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEF888FD-409A-41E5-92E0-C4ECF5FF52D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEF888FD-409A-41E5-92E0-C4ECF5FF52D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEF888FD-409A-41E5-92E0-C4ECF5FF52D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEF888FD-409A-41E5-92E0-C4ECF5FF52D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89D8DA90-9E88-43C2-87C9-C502A140C1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89D8DA90-9E88-43C2-87C9-C502A140C1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89D8DA90-9E88-43C2-87C9-C502A140C1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89D8DA90-9E88-43C2-87C9-C502A140C1A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70998305-B7AA-4A77-A083-235EA006CDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70998305-B7AA-4A77-A083-235EA006CDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70998305-B7AA-4A77-A083-235EA006CDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70998305-B7AA-4A77-A083-235EA006CDC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

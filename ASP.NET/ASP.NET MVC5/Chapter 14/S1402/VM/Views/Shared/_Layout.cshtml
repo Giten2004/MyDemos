@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>        
+        <title>@ViewBag.Title</title>
+        <link rel="stylesheet" href="~/Content/Site.css" />
+    </head>
+   <body>
+        <div class="page">
+            <div class="header">           
+                <ul class="nav">
+                    <li class="nav first">
+                        <img src="@Url.Content("~/Content/Images/home.png")" alt=""  class="icon"/>
+                        @Html.RouteLink("主页","Home",null,new { @class = "iconText" })                     
+                    </li>
+                    <li class="nav">
+                    <img src="@Url.Content("~/Content/Images/members.png")" alt=""  class="icon"/>
+                    @if (this.Request.IsAuthenticated)
+                    {    
+                        @Html.RouteLink("注销","Logout",null, new { @class = "iconText" })               
+                    }
+                    else
+                    { 
+                        @Html.RouteLink("登录", "Login", new { ReturnUrl = Request.Url }, new { @class = "iconText" })     
+                    }                    
+                    </li>
+                     <li class="nav">
+                        <img src="@Url.Content("~/Content/Images/cart.png")" alt=""  class="icon"/>
+                         @Html.RouteLink("购物车", "ShoppingCart", null, new { @class = "iconText" })    
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"> </div> 
+            <div class="main">@RenderBody()</div> 
+            <div style="clear:both" />
+            <div class="footer">
+               <span><a href="mailto:jiangjiannan@gmail.com" target="_blank">联系作者 |</a></span>
+               <span><a href="http://www.cnblogs.com/artech" target="_blank">技术博客 |</a></span>
+               <span><a href="http://www.weibo.com/artech" target="_blank">新浪微博</a></span>
+               <span class="copyRight">|©2014 Arteh</span>                
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+﻿@model LoginInfo
+@{
+    ViewBag.Title ="登录";
+ }
+<form action="@Url.RouteUrl("Login")" method="post">
+        <div class="login">
+        <div>@Html.ValidationSummary()</div>
+        <div class="title"></div>
+        <div style="padding:20px; border:1px solid Gray; border-top-style:none">
+            <div>@Html.LabelFor(m => m.UserName) <span>(Artech)</span></div>
+            <div>@Html.TextBoxFor(m => m.UserName, new { @class = "textBox" })</div>
+            <div>@Html.LabelFor(m => m.Password) <span>(Password+)</span></div>
+            <div>@Html.PasswordFor(m => m.Password, new { @class = "textBox" })</div>
+            <div>
+                 <input type="submit" value="登录" class="button" />
+                 @Html.Hidden("ReturnUrl",Request.QueryString["ReturnUrl"])
+            </div>
+            <div style="clear:both"/>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+﻿@model MovieInfo
+@{
+    ViewBag.Title = Model.Name;
+ }
+<div class="productDetail">
+    @{
+        MvcHtmlString htmlString = new MvcHtmlString(Model.Story);    
+    }
+    <img src="@Url.Content(Model.Poster)" class="poster" alt="@Model.Name" />
+    <div class="title">@Model.Name</div>
+    <div>@Html.LabelFor(m => m.Genre): @Url.GenreLinks(Model.Genre)</div>
+    <div>@Html.LabelFor(m => m.Starring): @Url.ActorLinks(Model.Starring)</div>
+    <div>@Html.LabelFor(m => m.SupportingActors): @Url.ActorLinks(Model.SupportingActors)</div>
+    <div>@Html.LabelFor(m => m.Director): @Model.Director</div>
+    <div>@Html.LabelFor(m => m.ScriptWriter): @Model.ScriptWriter</div>
+    <div>@Html.LabelFor(m => m.Language): @Model.Language</div>
+    <div>@Html.LabelFor(m => m.ProductionCountry): @Model.ProductionCountry</div>
+    <div>@Html.LabelFor(m => m.ProductionCompany): @Model.ProductionCompany</div>
+    <div>@Html.LabelFor(m => m.ReleaseYear): @Model.ReleaseYear</div>
+    <div>@Html.LabelFor(m => m.Price): ￥@Model.Price.ToString("#0.00")</div>
+    <div>@Html.LabelFor(m => m.Story): @htmlString</div>
+    <div class="addToShoppingCart">     
+       <form action="@Url.RouteUrl("ShoppingCart")" method="post">  
+            <input type="submit" value="" />
+            <input type="hidden" name="ProductId" value="@Model.ProductId" />
+            <input type="hidden" name="Price" value="@Model.Price" />
+            <input type="hidden" name="ProductName" value="@Model.Name" />
+       </form>
+    </div>
+</div>

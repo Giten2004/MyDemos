@@ -1,0 +1,42 @@
+﻿@using System.Linq.Expressions
+@using System.Reflection
+@model ModelMetadataInfo
+<html>
+<head>
+    <title>Model元数据</title>
+    <link rel="stylesheet" href="/Content/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/site.css" />
+</head>
+<body>
+    <table class="table table-bordered" >
+        <tr>
+            <th>Property</th>
+            @foreach (Expression<Func<ModelMetadata, object>> accessor in Model.PropertyAccessors)
+            {
+                MemberExpression memberExpression = accessor.Body as MemberExpression;
+                if (null == memberExpression)
+                {
+                    UnaryExpression convertExpression = accessor.Body as UnaryExpression;
+                    if (null != convertExpression)
+                    {
+                        memberExpression = (MemberExpression)convertExpression.Operand;
+                    }
+                }
+                PropertyInfo propertyInfo = (PropertyInfo)memberExpression.Member;
+                <th>@propertyInfo.Name</th>
+            }
+        </tr>
+
+        @foreach (ModelMetadata metadata in Model.ModelMetadata.Properties)
+        {
+            <tr>
+                <td>@metadata.PropertyName</td>
+                @foreach (Expression<Func<ModelMetadata, object>> accessor in Model.PropertyAccessors)
+                {
+                    <td>@(accessor.Compile()(metadata) ?? "N/A")</td>
+                }
+            </tr>
+        }
+    </table>
+</body>
+</html>

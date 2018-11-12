@@ -1,0 +1,16 @@
+﻿@model IActionInvoker[]
+<html>
+<head>
+    <title>ActionInvokers</title>
+    <link rel="stylesheet" href="/Content/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/site.css" />
+</head>
+<body>
+    <table class="table table-bordered">
+        @for (int i = 0; i < Model.Length; i++)
+        {
+            <tr><td>@(i + 1)</td><td>@Model[i].GetType().Name</td></tr>
+        }
+    </table>
+</body>
+</html>

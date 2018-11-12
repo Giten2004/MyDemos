@@ -1,0 +1,37 @@
+{
+	"version": 1,
+	"formatters":{
+		"simple":{
+			"format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+		},
+		"detail":{
+			"document": "you can find document here. https://docs.python.org/2/library/logging.html#logrecord-attributes",
+
+			"format": "[%(asctime)s][%(levelname)-9s][%(pathname)s:%(lineno)d][%(threadName)s] %(message)s" 	
+		}
+	},
+	"handlers":{
+		"console":{
+			"class": "logging.StreamHandler",
+			"level": "DEBUG",
+			"formatter": "detail",
+			"stream": "ext://sys.stdout"
+		},
+		"txtfile":{
+			"class": "logging.handlers.WatchedFileHandler",
+			"formatter": "detail",
+			"filename": "dictconfig.log"
+		}
+	},
+	"loggers":{
+		"simpleExample":{
+			"level": "DEBUG",
+			"handlers": ["console"],
+			"propagate": "no"
+		}
+	},
+	"root":{
+		"level": "DEBUG",
+		"handlers": ["console", "txtfile"]
+	}
+}

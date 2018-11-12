@@ -1,0 +1,7 @@
+﻿@model bool
+<table>
+    <tr>
+        <td>@Html.RadioButton("", true, Model)是</td>
+        <td>@Html.RadioButton("", false, !Model)否</td>
+    </tr>
+</table>

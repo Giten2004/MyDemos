@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20826</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DB653420-0298-453C-8F16-340EE09A5E54}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServiceModelEx</RootNamespace>
+    <AssemblyName>MEX Explorer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ApplicationIcon>IDesign.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ServiceBus, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\Windows Azure AppFabric SDK\V1.5\Assemblies\NET4.0\Microsoft.ServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Discovery" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dialogs\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AboutBox.designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AddressViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AddressViewControl.Designer.cs">
+      <DependentUpon>AddressViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BindingViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BindingViewControl.Designer.cs">
+      <DependentUpon>BindingViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ContractViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ContractViewControl.Designer.cs">
+      <DependentUpon>ContractViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OperationViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OperationViewControl.Designer.cs">
+      <DependentUpon>OperationViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ServiceViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ServiceViewControl.Designer.cs">
+      <DependentUpon>ServiceViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EndpointViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EndpointViewControl.Designer.cs">
+      <DependentUpon>EndpointViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NodeViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NodeViewControl.Designer.cs">
+      <DependentUpon>NodeViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DiscoveryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DiscoveryDialog.designer.cs">
+      <DependentUpon>DiscoveryDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExplorerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExplorerForm.Designer.cs">
+      <DependentUpon>ExplorerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\LogonDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\LogonDialog.designer.cs">
+      <DependentUpon>LogonDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\BindingNode.cs" />
+    <Compile Include="Nodes\ContractNode.cs" />
+    <Compile Include="Nodes\AddressNode.cs" />
+    <Compile Include="Nodes\OperationNode.cs" />
+    <Compile Include="Nodes\ServiceNode.cs" />
+    <Compile Include="Nodes\EndpointNode.cs" />
+    <Compile Include="Nodes\MexNode.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialogs\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AddressViewControl.resx">
+      <DependentUpon>AddressViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BindingViewControl.resx">
+      <DependentUpon>BindingViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ContractViewControl.resx">
+      <DependentUpon>ContractViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OperationViewControl.resx">
+      <DependentUpon>OperationViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ServiceViewControl.resx">
+      <DependentUpon>ServiceViewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EndpointViewControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EndpointViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NodeViewControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NodeViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DiscoveryDialog.resx">
+      <DependentUpon>DiscoveryDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExplorerForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ExplorerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\LogonDialog.resx">
+      <DependentUpon>LogonDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ExplorerForm.ServiceBus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Service.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Contract.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Endpoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Binding.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Address.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Operation.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ServiceError.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_16x.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddressUnspecified.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PieEndpoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Parameter.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CallbackContract.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IDesign.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Discover.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Code.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explore.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Proxy.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MEX.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Status.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\About.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Progress.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IDesign.ico" />
+    <Content Include="Resources\Logon.ico" />
+    <None Include="Resources\Discover.bmp" />
+    <None Include="Resources\Search.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ServiceModelEx\ServiceModelEx.csproj">
+      <Project>{0858C710-AF53-4049-B98E-CFE3638D1228}</Project>
+      <Name>ServiceModelEx</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>rem copy "$(TargetPath) "    "..\..\..\..\..\labs\"
+rem copy "$(TargetPath) "    "C:\Program Files\IDesign\"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

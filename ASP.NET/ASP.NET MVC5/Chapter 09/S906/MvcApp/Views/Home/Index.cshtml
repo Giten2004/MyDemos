@@ -1,0 +1,50 @@
+﻿<html>
+<head>
+    <script type="text/javascript" src="../../Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../../Scripts/jquery.validate.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("form").validate();
+        });
+    </script>
+    <title>编辑个人信息</title>
+    <style type="text/css">
+        .error {color:red}
+    </style>
+</head>
+<body>
+    <form action="/">
+        <table>
+            <tr>
+                <td>姓名：</td>
+                <td>
+                    <input class="required" id="name" name="name" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>出生日期：</td>
+                <td>
+                    <input class="required date" id="birthDate" name="birthDate" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Blog地址：</td>
+                <td>
+                    <input class="required url" id="blogAddress" name="blogAddress" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Email地址：</td>
+                <td>
+                    <input class="required email" id="emailAddress" name="emailAddress" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="保存" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

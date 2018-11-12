@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tempuri.org/Students.xsd StudentsNS.xsd" xmlns="http://tempuri.org/Students.xsd">
+	<student name="zhangsan" age="29"/>
+	<student name="lisi" age="19"/>
+</students>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="./scripts/knockout-3.3.0.js"></script>
+    <title>knockout first demo</title>
+</head>
+<body>
+    <h3>Meal upgrades</h3>
+    <p>Make your flight more bearable by selecting a meal to match your social and economic status.</p>
+    Chosen meal: <select data-bind="options: availableMeals, optionsText: 'mealName'"></select>
+
+    <script type="text/javascript">
+        var availableMeals = [
+            { mealName: 'Standard', description: 'Dry crusts of bread', extraCost: 0 },
+            { mealName: 'Premium', description: 'Fresh bread with cheese', extraCost: 9.95 },
+            { mealName: 'Deluxe', description: 'Caviar and vintage Dr Pepper', extraCost: 18.50 }
+        ];
+
+        var viewModel = {
+            /* we'll populate this in a moment */
+        };
+
+        ko.applyBindings(viewModel); // Makes Knockout get to work
+        // 注意：ko. applyBindings需要在上述HTML之后应用才有效
+    </script>
+</body>
+</html>

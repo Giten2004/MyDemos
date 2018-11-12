@@ -1,0 +1,49 @@
+﻿@model Route
+<html>
+<head>
+    <title>Route</title>
+    <link rel="stylesheet" href="/Content/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/site.css" />
+</head>
+<body>
+   <table class="table table-bordered">
+       <tr>
+           <td>Url</td>
+           <td>@Model.Url</td>
+       </tr>
+       <tr>
+           <td>DataTokens</td>
+           <td>
+               <ul>
+                   @foreach (var item in Model.DataTokens)
+                   {
+                       <li>@item.Key = @item.Value</li>
+                   }
+               </ul>
+           </td>
+       </tr>
+       <tr>
+          <td>Constraints</td>
+          <td>
+              <ul>
+                  @foreach (var item in Model.Constraints)
+                  {
+                      <li>@item.Key = @item.Value.GetType().Name</li>
+                  }
+              </ul>
+          </td>
+       </tr>
+       <tr>
+           <td>Defaults</td>
+           <td>
+               <ul>
+                   @foreach (var item in Model.Defaults)
+                   {
+                       <li>@item.Key = @item.Value</li>
+                   }
+               </ul>
+           </td>
+       </tr>
+   </table>
+</body>
+</html>

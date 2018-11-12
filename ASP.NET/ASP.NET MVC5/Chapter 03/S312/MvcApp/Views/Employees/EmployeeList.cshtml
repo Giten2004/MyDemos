@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Employee>
+<html>
+<head>
+    <title>员工列表</title>
+    <link rel="stylesheet" href="/Content/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/site.css" /> 
+</head>
+<body>
+    <table class="table table-bordered">
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>出生日期</th>
+            <th>部门</th>
+        </tr>
+        @{
+            foreach (Employee employee in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(employee.Name, "GetEmployeeById", new { name = employee.Name, id = employee.Id })</td>
+                    <td>@Html.DisplayFor(m => employee.Gender)</td>
+                    <td>@Html.DisplayFor(m => employee.BirthDate)</td>
+                    <td>@Html.DisplayFor(m => employee.Department)</td>
+                </tr>
+            }
+        }
+    </table>
+</body>
+</html>

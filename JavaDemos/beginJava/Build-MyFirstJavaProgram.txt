@@ -1,0 +1,4 @@
+javac MyFirstJavaProgram.java
+
+
+java MyFirstJavaProgram 

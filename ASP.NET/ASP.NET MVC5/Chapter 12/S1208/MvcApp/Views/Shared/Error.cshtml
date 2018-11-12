@@ -1,0 +1,34 @@
+﻿@model ExtendedHandleErrorInfo
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+    <style type="text/css">
+        h3 {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <h3>
+        @Html.DisplayFor(m => m.ErrorMessage)
+    </h3>
+    <ul>
+        <li>Controller: @Html.DisplayFor(m => m.ControllerName)</li>
+        <li>Action: @Html.DisplayFor(m => m.ActionName)</li>
+        <li>
+            Exception:
+            <ul>
+                <li>Message: @Html.DisplayFor(m => m.Exception.Message)</li>
+                <li>Type: @Model.Exception.GetType().FullName</li>
+                <li>
+                    StackTrace: @Html.DisplayFor(m => m.Exception.StackTrace)
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

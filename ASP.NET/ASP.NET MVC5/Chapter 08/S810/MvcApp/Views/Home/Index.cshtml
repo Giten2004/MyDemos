@@ -1,0 +1,16 @@
+﻿@model Contact
+<html>
+<head>
+    <title>Model绑定中的验证</title>
+    <link rel="stylesheet" href="/Content/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/site.css" />
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.EditorForModel()
+        @Html.EditorFor(m => m.Address)
+        <input type="submit" value="保存" />
+    }
+</body>
+</html>

@@ -1,0 +1,1 @@
+<%@ ServiceHost Language="C#"  Debug="true" CodeBehind="~/App_Code/AspNetSqlProviderService.cs" Service="AspNetSqlProviderService" %>

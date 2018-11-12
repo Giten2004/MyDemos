@@ -1,0 +1,23 @@
+﻿@model IDictionary<ParameterDescriptor, IModelBinder>
+<html>
+<head>
+    <title>ModelBinders</title>
+    <link rel="stylesheet" href="~/content/bootstrap.css" />
+    <link rel="stylesheet" href="~/content/site.css" />
+</head>
+<body>
+    <table class="table table-bordered">
+        <tr><th>Parameter</th><th>ModelBinder</th></tr>
+        @foreach (var item in this.Model)
+        { 
+            <tr>
+                <td>@item.Key.ParameterName</td>
+                <td>@item.Value.GetType().Name</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
+
+
+

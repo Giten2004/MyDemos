@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+    <title>Gallery</title>
+    <style type="text/css">
+        li {
+            list-style-type: none;
+            float: left;
+            margin: 10px 10px 0px 0px;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <img alt="001" src="@Url.Action("Image", new { id = "001" })" />
+        </li>
+        <li>
+            <img alt="002" src="@Url.Action("Image", new { id = "002" })" />
+        </li>
+        <li>
+            <img alt="003" src="@Url.Action("Image", new { id = "003" })" />
+        </li>
+        <li>
+            <img alt="004" src="@Url.Action("Image", new { id = "004" })" />
+        </li>
+        <li>
+            <img alt="005" src="@Url.Action("Image", new { id = "005" })" />
+        </li>
+        <li>
+            <img alt="006" src="@Url.Action("Image", new { id = "006" })" />
+        </li>
+    </ul>
+</body>
+</html>

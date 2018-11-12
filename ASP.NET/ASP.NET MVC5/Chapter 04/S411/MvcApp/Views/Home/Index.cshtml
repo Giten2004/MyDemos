@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ModelMetadata>
+<html>
+<head>
+    <title>候选模板列表</title>
+</head>
+<body>
+    @{
+        Func<ModelMetadata, string, IEnumerable<string>>templateNamesAccessor = ViewBag.TemplateNamesAccessor;
+    }
+    <ul>
+        @foreach (ModelMetadata metadata in Model)
+        {
+            <li>
+                <span>@metadata.PropertyName</span>
+                <ul>
+                    @foreach (string templateName in
+                             templateNamesAccessor(metadata, "Mandatory Template"))
+                    {
+                        <li>@templateName</li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</body>
+</html>

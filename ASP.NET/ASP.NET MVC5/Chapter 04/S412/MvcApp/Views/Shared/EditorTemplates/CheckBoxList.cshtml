@@ -1,0 +1,5 @@
+﻿@model IEnumerable<string>
+@{
+    string listName = (string)ViewData.ModelMetadata.AdditionalValues["ListName"];
+    @Html.CheckBoxList("", listName, Model)
+}

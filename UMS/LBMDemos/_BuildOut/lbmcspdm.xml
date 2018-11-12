@@ -1,0 +1,3086 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>lbmcspdm</name>
+    </assembly>
+    <members>
+        <member name="T:com.latencybusters.pdm.PDMDecimal">
+            <summary> A representation of a decimal with an exponent and mantissa (in the form: a x 10^b)</summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDecimal.#ctor(System.Int64,System.SByte)">
+            <summary>
+            PDMDecimal constructor
+            </summary>
+            <param name="mantissa">is the "a" component in the form: a x 10^b</param>
+            <param name="exponent">is the "b" component in the form: a x 10^b</param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDecimal.ToString">
+            <summary>
+            concatenates the mantissa and exponent into a string
+            </summary>
+            <returns>the string representing this PDMDecimal</returns>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMDecimal.Mantissa">
+            <summary>
+            the mantissa component of the PDMDecimal
+            </summary>
+            <value>
+            the mantissa is the "a" component in the form: a x 10^b
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMDecimal.Exponent">
+            <summary>
+            the exponent component of the PDMDecimal
+            </summary>
+            <value>
+            the exponent is the "b" component in the form: a x 10^b
+            </value>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMDefinition">
+            <summary> The message definition class that needs to be populated and finalized
+            before using in a {@link PDMMessage}
+            </summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.#ctor">
+            <summary> Protected constructor used by {@link PDMMessage}
+            when parsing a PDMDefinition included with the {@link PDMMessage}
+            </summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.#ctor(System.Int32)">
+            <summary> Creates a new definition with the specified number of fields</summary>
+            <param name="numFields">the number of fields
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.#ctor(System.Int32,System.Boolean)">
+            <summary> Creates a new definition with the specified number of fields
+            and whether or not to use ints or strings as field names
+            </summary>
+            <param name="numFields">the number of fields
+            </param>
+            <param name="useIntsForNames">true to use ints as field names or false
+            to use string field names (the default)
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.getFieldInfoList">
+            <summary> The accessor method for the list of field info
+            </summary>
+            <returns> the list of PDMFieldInfo objects
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.calcLen(com.latencybusters.pdm.PDMSerializer)">
+            <summary> Calculates the total length of the definition</summary>
+            <param name="ser">the PDMSerializer to use
+            </param>
+            <returns> the length in bytes
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.getFieldInfoById(System.Int32)">
+            <summary> Gets the {@link PDMFieldInfo} object by its id</summary>
+            <param name="id">the internal id of the field
+            </param>
+            <returns> the {@link PDMFieldInfo} object
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.addFieldInfo(System.String,System.Int32,com.latencybusters.pdm.PDMFieldType,System.Int32,System.Boolean,System.Int32)">
+            <summary> The main method used internally to add field information
+            to the definition
+            </summary>
+            <param name="strName">the string name of the field (if using string names)
+            </param>
+            <param name="intName">the int name of the field (if using int names)
+            </param>
+            <param name="type">the type of field
+            </param>
+            <param name="fixedStrLen">the fixed string length (number of characters) and is normally 0 unless the type is fixed string or fixed unicode
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+            <param name="numElements">a non-zero value is used to define a fixed-size array for array types
+            </param>
+            <returns> the added {@link PDMFieldInfo}
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.createFieldInfoIterator">
+            <summary> Creates an iterator of {@link PDMFieldInfo} to iterate
+            through the field information
+            </summary>
+            <returns> an Enumerator used to iterate through the list of PDMFieldInfo
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.finalizeDef">
+            <summary> Finalizes the definition to ready it for use in a message</summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.getFieldInfo(System.Int32)">
+            <summary> Access the field information by integer name</summary>
+            <param name="name">the int field name
+            </param>
+            <returns> the {@link PDMFieldInfo} handle
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.getFieldInfo(System.String)">
+            <summary> Access the field information by String name</summary>
+            <param name="name">the string field name
+            </param>
+            <returns> the {@link PDMFieldInfo} handle
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.addFieldInfo(System.String,com.latencybusters.pdm.PDMFieldType,System.Boolean)">
+            <summary> Adds field information to the definition with a string field name</summary>
+            <param name="name">the string name of the field
+            </param>
+            <param name="type">the type of field
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+            <returns> the {@link PDMFieldInfo} handle
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.addFieldInfo(System.Int32,com.latencybusters.pdm.PDMFieldType,System.Boolean)">
+            <summary> Adds field information to the definition with an int field name</summary>
+            <param name="name">the int name of the field
+            </param>
+            <param name="type">the type of field
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+            <returns> the {@link PDMFieldInfo} handle
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.addFieldInfo(System.String,com.latencybusters.pdm.PDMFieldType,System.Int32,System.Boolean)">
+            <summary> Adds field information to the definition for a fixed length
+            string field with a string field name
+            </summary>
+            <param name="name">the string name of the field
+            </param>
+            <param name="type">the type of field
+            </param>
+            <param name="fixedStrLen">the fixed string length (number of characters) and is normally 0 unless the type is fixed string or fixed unicode
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+            <returns> the {@link PDMFieldInfo} handle
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.addFieldInfo(System.Int32,com.latencybusters.pdm.PDMFieldType,System.Int32,System.Boolean)">
+            <summary> Adds field information to the definition for a fixed length
+            string field with an int field name
+            </summary>
+            <param name="name">the int name of the field
+            </param>
+            <param name="type">the type of field
+            </param>
+            <param name="fixedStrLen">the fixed string length (number of characters) and is normally 0 unless the type is fixed string or fixed unicode
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+            <returns> the {@link PDMFieldInfo} handle
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.addFieldInfo(System.String,com.latencybusters.pdm.PDMFieldType,System.Boolean,System.Int32)">
+            <summary> Adds field information to the definition for a fixed-size array
+            field with a string field name
+            </summary>
+            <param name="name">the string name of the field
+            </param>
+            <param name="type">the type of field
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+            <param name="numElements">a non-zero value is used to define a fixed-size array for array types
+            </param>
+            <returns> the {@link PDMFieldInfo} handle
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.addFieldInfo(System.Int32,com.latencybusters.pdm.PDMFieldType,System.Boolean,System.Int32)">
+            <summary> Adds field information to the definition for a fixed-size array
+            field with an int field name
+            </summary>
+            <param name="name">the int name of the field
+            </param>
+            <param name="type">the type of field
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+            <param name="numElements">a non-zero value is used to define a fixed-size array for array types
+            </param>
+            <returns> the {@link PDMFieldInfo} handle
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.addFieldInfo(System.String,com.latencybusters.pdm.PDMFieldType,System.Int32,System.Boolean,System.Int32)">
+            <summary> Adds field information to the definition for a fixed-size array
+            field of fixed length strings with a string field name
+            </summary>
+            <param name="name">the string name of the field
+            </param>
+            <param name="type">the type of field
+            </param>
+            <param name="fixedStrLen">the fixed string length (number of characters) and is normally 0 unless the type is fixed string or fixed unicode
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+            <param name="numElements">a non-zero value is used to define a fixed-size array for array types
+            </param>
+            <returns> the {@link PDMFieldInfo} handle
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.addFieldInfo(System.Int32,com.latencybusters.pdm.PDMFieldType,System.Int32,System.Boolean,System.Int32)">
+            <summary> Adds field information to the definition for a fixed-size array
+            field of fixed length strings with an int field name 
+            </summary>
+            <param name="name">the int name of the field
+            </param>
+            <param name="type">the type of field
+            </param>
+            <param name="fixedStrLen">the fixed string length (number of characters) and is normally 0 unless the type is fixed string or fixed unicode
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+            <param name="numElements">a non-zero value is used to define a fixed-size array for array types
+            </param>
+            <returns> the {@link PDMFieldInfo} handle
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.compareToWithVersion(System.Int32,System.Int32,System.Int32)">
+            <summary> Used to compare this {@link PDMDefinition} to another's properties
+            taking into account the definition id and the major and minor message version	
+            </summary>
+            <param name="otherDefnId">the other definition id to compare against
+            </param>
+            <param name="otherMsgVersMajor">the other definition major version to compare against
+            </param>
+            <param name="otherMsgVersMinor">the other definition minor version to compare against
+            </param>
+            <returns> 0 if the two are equal, 1 if this {@link PDMDefinition} is greater,
+            -1 if this {@link PDMDefinition} is less
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.compareToWithVersion(com.latencybusters.pdm.PDMDefinition)">
+            <summary> Used to compare this {@link PDMDefinition} to another taking into account
+            the definition id and the major and minor message version	
+            </summary>
+            <param name="other">the other PDMDefinition to compare against
+            </param>
+            <returns> 0 if the two are equal, 1 if this {@link PDMDefinition} is greater,
+            -1 if this {@link PDMDefinition} is less
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.compareTo(System.Int32)">
+            <summary> Used to compare this {@link PDMDefinition} to another's id taking into account
+            only the the definition id	
+            </summary>
+            <param name="otherDefnId">the other definition id to compare against
+            </param>
+            <returns> 0 if the two are equal, 1 if this {@link PDMDefinition} is greater,
+            -1 if this {@link PDMDefinition} is less
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.compareTo(com.latencybusters.pdm.PDMDefinition)">
+            <summary> Used to compare this {@link PDMDefinition} to another taking into account
+            only the the definition id	
+            </summary>
+            <param name="other">the other PDMDefinition to compare against
+            </param>
+            <returns> 0 if the two are equal, 1 if this {@link PDMDefinition} is greater,
+            -1 if this {@link PDMDefinition} is less
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.toBytes(com.latencybusters.pdm.PDMSerializer)">
+            <summary> Serializes the {@link PDMDefinition} to a new byte array</summary>
+            <param name="ser">the PDMSerializer to use
+            </param>
+            <returns> the new byte array
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.toBytes(com.latencybusters.pdm.PDMSerializer,System.Byte[],System.Int32)">
+            <summary> Serialize the {@link PDMDefinition} to an existing byte array</summary>
+            <param name="ser">the PDMSerializer to use
+            </param>
+            <param name="ba">the byte array to serialize into
+            </param>
+            <param name="pos">the position to start at in the byte array
+            </param>
+            <returns> the updated position after serializing this object
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.parse(com.latencybusters.pdm.PDMDeserializer,System.Byte[])">
+            <summary> Parses an existing byte array into this object</summary>
+            <param name="deser">the PDMDeserializer to use
+            </param>
+            <param name="ba">the byte array to parse
+            </param>
+            <returns> the updated position after parsing this object
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinition.parse(com.latencybusters.pdm.PDMDeserializer,System.Byte[],System.Int32)">
+            <summary> Parses an existing byte array into this object</summary>
+            <param name="deser">the PDMDeserializer to use
+            </param>
+            <param name="ba">the byte array to parse
+            </param>
+            <param name="pos">the position to start parsing in the byte array
+            </param>
+            <returns> the updated position after parsing this object
+            </returns>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMDefinition.NumFields">
+            <summary> The NumFields property of the definition
+            </summary>
+            <value> the number of fields specified for this definition
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMDefinition.Finalized">
+            <summary> The finalized property of the definition
+            </summary>
+            <value> whether or not the definition has been finalized yet
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMDefinition.MsgVersMajor">
+            <summary> The MsgVersMajor property of the definition
+            </summary>
+            <value> the major version number for the definition and corresponding messages
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMDefinition.MsgVersMinor">
+            <summary> The MsgVersMinor property of the definition
+            </summary>
+            <value> the minor version number for the definition and corresponding messages
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMDefinition.Id">
+            <summary> The Id property of the definition
+            </summary>
+            <value> the int id of the definition
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMDefinition.IntsForNames">
+            <summary> The IntsForNames property of the definition
+            </summary>
+            <value> whether or not ints are used for names in this definition
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMDefinition.FixedRequiredLen">
+            <summary> Gets or calcs the length of the fixed required fields</summary>
+            <value> the length in bytes of the fixed required section
+            </value>
+            <returns> the length in bytes
+            </returns>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMDefinitionCache">
+            <summary> A cache to store {@link PDMDefinition}s by their id and version</summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinitionCache.containsKey(System.Int32)">
+            <summary> Checks to see if cache contains a definition with the matching
+            definition id (regardless of version)
+            </summary>
+            <param name="definitionId">the id of the definition to look up
+            </param>
+            <returns> true if the cache contains this definition id
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinitionCache.containsKey(System.Int32,System.Int32,System.Int32)">
+            <summary> Checks to see if cache contains a definition with the matching
+            definition id, and version
+            </summary>
+            <param name="definitionId">the id of the definition to look up
+            </param>
+            <param name="versionMajor">the major version number of the definition to look up
+            </param>
+            <param name="versionMinor">the minor version number of the definition to look up
+            </param>
+            <returns> true if the cache contains this {@link PDMDefinition}
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinitionCache.get(System.Int32)">
+            <summary> Gets any matching {@link PDMDefinition} (regardless of version)
+            by its id
+            </summary>
+            <param name="definitionId">the id of the definition to look up
+            </param>
+            <returns> the {@link PDMDefinition} list of matches
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinitionCache.get(System.Int32,System.Int32,System.Int32)">
+            <summary> Gets the matching {@link PDMDefinition} including version</summary>
+            <param name="definitionId">the id of the definition to look up
+            </param>
+            <param name="versionMajor">the major version number of the definition to look up
+            </param>
+            <param name="versionMinor">the minor version number of the definition to look up
+            </param>
+            <returns> the {@link PDMDefinition}
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinitionCache.put(com.latencybusters.pdm.PDMDefinition)">
+            <summary> Stores the {@link PDMDefinition} in the cache by its id,
+            major version and minor version, unless the id is 0
+            </summary>
+            <param name="def">the definition to store
+            </param>
+            <returns> the stored {@link PDMDefinition} or null if it could not be added
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinitionCache.remove(System.Int32)">
+            <summary> Removes any matching {@link PDMDefinition} from the cache
+            with the corresponding id regardless of version
+            </summary>
+            <param name="definitionId">the id of the definition to remove
+            </param>
+            <returns> the removed {@link PDMDefinition}
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinitionCache.remove(System.Int32,System.Int32,System.Int32)">
+            <summary> Removes any matching {@link PDMDefinition} from the cache
+            withthe corresponding id and version
+            </summary>
+            <param name="definitionId">the id of the definition to remove
+            </param>
+            <param name="versionMajor">the major version of the definition to remove
+            </param>
+            <param name="versionMinor">the minor version of the definition to remove
+            </param>
+            <returns> the {@link PDMDefinition} that was removed or null
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDefinitionCache.clear">
+            <summary> Clears the cache of all definitions and ids</summary>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMDefinitionCache.Instance">
+            <summary> Used to get the Singleton instance of the cache</summary>
+            <value> the PDMDefinitionCache instance</value>
+            <returns> the instance of the {@link PDMDefinitionCache}
+            </returns>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMDeserializer">
+            <summary> Used to deserialize bytes into the appropriate type</summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.setByteSwap(System.Byte[],System.Int32,System.UInt32)">
+            <summary> Sets the flag on whether to swap bytes by comparing the magic
+            number read in from the ba at the specified pos to the one passed in
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="magic">the magic number to compare against
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.isByteSwap">
+            <summary> Gets whether the byteSwap flag is set</summary>
+            <returns> true if byteSwap flag is set
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readBoolean(System.Byte[],System.Int32)">
+            <summary> This method will use one bytes from the given byte array starting at
+            position to create a boolean.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the boolean
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readByte(System.Byte[],System.Int32)">
+            <summary> This method will use one bytes from the given byte array starting at
+            position to create a byte.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the byte
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readUByte(System.Byte[],System.Int32)">
+            <summary> This method will use one bytes from the given byte array starting at
+            position to create an unsigned byte (stored in a short). 
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the unsigned byte
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readShort(System.Byte[],System.Int32,System.Boolean)">
+            <summary> This method will use two bytes from the given byte array starting at
+            position to create a short.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="byteSwap">whether or not the bytes need to be swapped
+            </param>
+            <returns> the short
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readShort(System.Byte[],System.Int32)">
+            <summary> This method will use two bytes from the given byte array starting at
+            position to create a short. 
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the short
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readUShort(System.Byte[],System.Int32,System.Boolean)">
+            <summary> This method will use two bytes from the given byte array starting at
+            position to create an unsigned short (stored as an int).
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="byteSwap">whether or not the bytes need to be swapped
+            </param>
+            <returns> the unsigned short
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readUShort(System.Byte[],System.Int32)">
+            <summary> This method will use two bytes from the given byte array starting at
+            position to create an unsigned short (stored as an int).
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the unsigned short
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readInt(System.Byte[],System.Int32,System.Boolean)">
+            <summary> This method will use four bytes from the given byte array starting at
+            position to create an int.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="byteSwap">whether or not the bytes need to be swapped
+            </param>
+            <returns> the int
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readInt(System.Byte[],System.Int32)">
+            <summary> This method will use four bytes from the given byte array starting at
+            position to create an int.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the int
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readUInt(System.Byte[],System.Int32,System.Boolean)">
+            <summary> This method will use four bytes from the given byte array starting at
+            position to create an unsigned int (stored as a long).
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="byteSwap">whether or not the bytes need to be swapped
+            </param>
+            <returns> the unsigned int
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readUInt(System.Byte[],System.Int32)">
+            <summary> This method will use four bytes from the given byte array starting at
+            position to create an unsigned int (stored as a long).
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the unsigned int
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readLong(System.Byte[],System.Int32,System.Boolean)">
+            <summary> This method will use eight bytes from the given byte array starting at
+            position to create a long.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="byteSwap">whether or not the bytes need to be swapped
+            </param>
+            <returns> the long
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readLong(System.Byte[],System.Int32)">
+            <summary> This method will use eight bytes from the given byte array starting at
+            position to create a long.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the long
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readULong(System.Byte[],System.Int32,System.Boolean)">
+            <summary> This method will use eight bytes from the given byte array starting at
+            position to create an unsigned long (stored in a BigInteger). 
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="byteSwap">whether or not the bytes need to be swapped
+            </param>
+            <returns> the unsigned long
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readULong(System.Byte[],System.Int32)">
+            <summary> This method will use eight bytes from the given byte array starting at
+            position to create an unsigned long (stored in a BigInteger).
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the unsigned long
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readFloat(System.Byte[],System.Int32,System.Boolean)">
+            <summary> This method will use four bytes from the given byte array starting at
+            position to create a float.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="byteSwap">whether or not the bytes need to be swapped
+            </param>
+            <returns> the float
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readFloat(System.Byte[],System.Int32)">
+            <summary> This method will use four bytes from the given byte array starting at
+            position to create a float.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the float
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readDouble(System.Byte[],System.Int32,System.Boolean)">
+            <summary> This method will use eight bytes from the given byte array starting at
+            position to create a double.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="byteSwap">whether or not the bytes need to be swapped
+            </param>
+            <returns> the double
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readDouble(System.Byte[],System.Int32)">
+            <summary> This method will use eight bytes from the given byte array starting at
+            position to create a double.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the double
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readDecimal(System.Byte[],System.Int32,System.Boolean)">
+            <summary> This method will use nine bytes from the given byte array starting at
+            position to create a {@link PDMDecimal}.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="byteSwap">whether or not the bytes need to be swapped
+            </param>
+            <returns> the {@link PDMDecimal}
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readDecimal(System.Byte[],System.Int32)">
+            <summary> This method will use eight bytes from the given byte array starting at
+            position to create a {@link PDMDecimal}.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the {@link PDMDecimal}
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readTimestamp(System.Byte[],System.Int32,System.Boolean)">
+            <summary> This method will use eight bytes from the given byte array starting at
+            position to create a {@link PDMTimestamp}.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="byteSwap">whether or not the bytes need to be swapped
+            </param>
+            <returns> the {@link PDMTimestamp}
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readTimestamp(System.Byte[],System.Int32)">
+            <summary> This method will use eight bytes from the given byte array starting at
+            position to create a {@link PDMTimestamp}.
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <returns> the {@link PDMTimestamp}
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readString(System.Byte[],System.Int32,System.Int32)">
+            <summary> This method will read the specified len at position pos from
+            the byte array and create a String expecting the String
+            to end with a byte 0 
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="len">the length of the string in bytes
+            </param>
+            <returns> the String
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readUnicode(System.Byte[],System.Int32,System.Int32,System.String)">
+            <summary> This method will read the specified len at position pos from
+            the byte array and create a unicode String expecting the String
+            to end with a byte 0 
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="len">the length of the string in bytes
+            </param>
+            <param name="charSet">the character set
+            </param>
+            <returns> the String
+            </returns>
+            <throws>  UnsupportedEncodingException </throws>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readUnicode(System.Byte[],System.Int32,System.Int32)">
+            <summary> This method will read the specified len at position pos from
+            the byte array and create a UTF-8 unicode String expecting
+            the String to end with a byte 0
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="len">the length of the string in bytes
+            </param>
+            <returns> the String
+            </returns>
+            <throws>  UnsupportedEncodingException </throws>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readByteArray(System.Byte[],System.Int32,System.Byte[])">
+            <summary> Copies bytes from the source byte array (ba) into the destination byte array</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="destByteArray">the destination byte array
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readByteArray(System.Byte[],System.Int32,System.Byte[],System.Int32)">
+            <summary> Copies bytes from the source byte array (ba) into the destination byte array</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="destByteArray">the destination byte array
+            </param>
+            <param name="copyLen">the number of bytes to copy
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMDeserializer.readByteArray(System.Byte[],System.Int32,System.Int32)">
+            <summary> Creates a new byte array from the source byte array (ba) at position
+            for the given length
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the position to start reading
+            </param>
+            <param name="length">the length in bytes to copy
+            </param>
+            <returns> the new byte array
+            </returns>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMException">
+            <summary> An exception class thrown by the PDM library.</summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMException.#ctor(System.String)">
+            <param name="message">the string message
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMException.#ctor(System.Exception)">
+            <param name="t">the exception to wrap (will use a string message of "PDM Exception")
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMException.#ctor(System.String,System.Exception)">
+            <param name="message">the string message
+            </param>
+            <param name="t">the exception to wrap
+            </param>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMField">
+            <summary> A field is element in the message that contains the value and a reference
+            back to the field information that was created in the {@link PDMDefinition}
+            </summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMField.REQ_FIX_HEADER_LEN">
+            <summary> const variable for the length of a required-fixed field header
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMField.REQ_VAR_HEADER_LEN">
+            <summary> const variable for the length of a required-variable header
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMField.OPT_FIX_HEADER_LEN">
+            <summary> const variable for the length of an optional-fixed header
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMField.OPT_VAR_HEADER_LEN">
+            <summary> const variable for the length of an optional-variable header
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMField.UNICODE_CHAR_LEN">
+            <summary> const variable for the forced length of a unicode character 
+            </summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.#ctor(com.latencybusters.pdm.PDMFieldInfo,com.latencybusters.pdm.PDMSection,System.Int32,com.latencybusters.pdm.PDMSerializer,com.latencybusters.pdm.PDMDeserializer)">
+            <param name="info">the corresponding PDMFieldInfo from the PDMDefinition
+            </param>
+            <param name="section">the section where the bytes will be stored
+            </param>
+            <param name="offset">the offset into the section
+            </param>
+            <param name="ser">the PDMSerializer to do the serializing
+            </param>
+            <param name="deser">the PDMDeserializer to do the deserializing
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.isValueSet">
+            <summary> Used to check whether or not the value has been set for this PDMField
+            </summary>
+            <returns> the bool indicating if the value has been set
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValueSet(System.Boolean)">
+            <summary> Sets the bool to indicate whether or not the value has been set for this PDMField
+            </summary>
+            <param name="valueSet">the bool indicating whether or not the value has been set
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.createBufferIfNeeded">
+            <summary> Creates the section buffer for the field if they are needed
+            </summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.swapBytes">
+            <summary> swaps the bytes of the field specific to the field type
+            </summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getValue">
+            <summary> Gets the actual value that was set in the field.</summary>
+            <returns> the Object representing the field value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getBooleanValue">
+            <summary>
+            Gets the actual value that was set in the field as Boolean
+            </summary>
+            <returns>the Boolean field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getInt8Value">
+            <summary>
+            Gets the actual value that was set in the field as Int8
+            </summary>
+            <returns>the Int8 field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getUInt8Value">
+            <summary>
+            Gets the actual value that was set in the field as UInt8
+            </summary>
+            <returns>the Uint8 field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getInt16Value">
+            <summary>
+            Gets the actual value that was set in the field as Int16
+            </summary>
+            <returns>the Int16 field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getUInt16Value">
+            <summary>
+            Gets the actual value that was set in the field as UInt16
+            </summary>
+            <returns>the UInt16 field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getInt32Value">
+            <summary>
+            Gets the actual value that was set in the field as Int32
+            </summary>
+            <returns>the Int32 field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getUInt32Value">
+            <summary>
+            Gets the actual value that was set in the field as UInt32
+            </summary>
+            <returns>the UInt32 field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getInt64Value">
+            <summary>
+            Gets the actual value that was set in the field as Int64
+            </summary>
+            <returns>the Int64 field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getUInt64Value">
+            <summary>
+            Gets the actual value that was set in the field as Int64
+            </summary>
+            <returns>the UInt64 field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getFloatValue">
+            <summary>
+            Gets the actual value that was set in the field as Float
+            </summary>
+            <returns>the Float field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getDoubleValue">
+            <summary>
+            Gets the actual value that was set in the field as Double
+            </summary>
+            <returns>the Double field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getDecimalValue">
+            <summary>
+            Gets the actual value that was set in the field as PDMDecimal
+            </summary>
+            <returns>the PDMDecimal field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getTimestampValue">
+            <summary>
+            Gets the actual value that was set in the field as PDMTimestamp
+            </summary>
+            <returns>the PDMTimestamp field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getStringValue">
+            <summary>
+            Gets the actual value that was set in the field as String for types: FIX_STRING, STRING, FIX_UNICODE, UNICODE
+            </summary>
+            <returns>the String field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getBlobValue">
+            <summary>
+            Gets the actual value that was set in the field as Blob
+            </summary>
+            <returns>the blob field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getMessageValue">
+            <summary>
+            Gets the actual value that was set in the field as PDMMessage
+            </summary>
+            <returns>the PDMMessage field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getBooleanArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as Boolean[]
+            </summary>
+            <returns>the Boolean[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getInt8ArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as Int8[]
+            </summary>
+            <returns>the Int8[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getUInt8ArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as UInt8[]
+            </summary>
+            <returns>the UInt8[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getInt16ArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as Int16[]
+            </summary>
+            <returns>the Int16[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getUInt16ArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as UInt16[]
+            </summary>
+            <returns>the UInt16[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getInt32ArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as Int32[]
+            </summary>
+            <returns>the Int32[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getUInt32ArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as UInt32[]
+            </summary>
+            <returns>the UInt32[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getInt64ArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as Int64[]
+            </summary>
+            <returns>the Int64[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getUInt64ArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as UInt64[]
+            </summary>
+            <returns>the UInt64[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getFloatArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as Single[]
+            </summary>
+            <returns>the Single[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getDoubleArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as Double[]
+            </summary>
+            <returns>the Double[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getDecimalArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as PDMDecimal[]
+            </summary>
+            <returns>the PDMDecimal[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getTimestampArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as PDMTimestamp[]
+            </summary>
+            <returns>the PDMTimestamp[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getStringArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as String[]
+            </summary>
+            <returns>the Single[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getBlobArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as Blob[]
+            </summary>
+            <returns>the Blob[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.getMessageArrayValue">
+            <summary>
+            Gets the actual value that was set in the field as PDMMessage[]
+            </summary>
+            <returns>the PDMMessage[] field value</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Boolean)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the bool value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.SByte)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the sbyte value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Byte)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the byte value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Int16)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the short value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.UInt16)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the ushort value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Int32)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the int value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.UInt32)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the uint value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Int64)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the long value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.UInt64)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the ulong value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Single)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the float value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Double)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the double value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(com.latencybusters.pdm.PDMDecimal)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the PDMDecimal value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(com.latencybusters.pdm.PDMTimestamp)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the PDMTimestamp value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.String)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the String value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(com.latencybusters.pdm.PDMMessage)">
+            <summary> Sets the field value to the value passed</summary>
+            <param name="newValue">the PDMMessage value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Boolean[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the bool array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.SByte[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the sbyte array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Byte[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the byte array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Int16[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the short array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.UInt16[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the ushort array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Int32[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the int array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.UInt32[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the uint array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Int64[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the long array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.UInt64[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the ulong array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Single[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the float array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Double[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the double array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(com.latencybusters.pdm.PDMDecimal[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the PDMDecimal array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(com.latencybusters.pdm.PDMTimestamp[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the PDMTimestamp array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.String[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the String array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(System.Byte[][])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the byte[] array value
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMField.setValue(com.latencybusters.pdm.PDMMessage[])">
+            <summary> Sets the field value to the array value passed</summary>
+            <param name="values">the PDMMessage array value
+            </param>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMField.FieldInfo">
+            <summary> Gets the corresponding PDMFieldInfo from the PDMDefinition
+            </summary>
+            <value> the field info object
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMField.Id">
+            <summary> Gets the internal Id of the PDMField
+            </summary>
+            <value> the internal id
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMField.IntName">
+            <summary> Gets the IntName of the PDMField
+            </summary>
+            <value> the name of the field if using integer names
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMField.StrName">
+            <summary> Gets the StrName of the PDMField
+            </summary>
+            <value> the name of the field if using string names
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMField.FieldType">
+            <summary> Gets the PDMFieldType of the PDMField
+            </summary>
+            <value> the field type object
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMField.Offset">
+            <summary> The Offset of the PDMField
+            </summary>
+            <value> the offset into the section
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMField.Section">
+            <summary> The PDMSection of the PDMField
+            </summary>
+            <value> the section of the field
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMField.VariableLen">
+            <summary> The VariableLen of the PDMField
+            </summary>
+            <value> the length of the field in bytes if is a variable length field
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMField.ByteSwap">
+            <summary> Whether or not the bytes of the field need to be swapped
+            </summary>
+            <value> the bool that determines if the bytes need to be swapped
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMField.LenIncludingHeader">
+            <summary> Gets the length in bytes of the field or -1 if it
+            is variable length and cannot be determined yet
+            </summary>
+            <value> the length in bytes or -1
+            </value>
+            <returns> the length in bytes of the field
+            </returns>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMFieldInfo">
+            <summary> A handle to field information returned from a {@link PDMDefinition}
+            that is used when adding a field value to a {@link PDMMessage}.
+            </summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldInfo.INT_NAME_KNOWN_LEN">
+            <summary> A const variable for the known length of a PDMFieldInfo in bytes if int names are used
+            </summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldInfo.#ctor(System.Int32,System.String,com.latencybusters.pdm.PDMFieldType,System.Boolean)">
+            <summary> Constructor used for single value fields with string names
+            (except for fixed length strings)
+            </summary>
+            <param name="id">the internal id of the field info
+            </param>
+            <param name="name">the string name
+            </param>
+            <param name="type">the type
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldInfo.#ctor(System.Int32,System.Int32,com.latencybusters.pdm.PDMFieldType,System.Boolean)">
+            <summary> Constructor used for single value fields with int names
+            (except for fixed length strings)
+            </summary>
+            <param name="id">the internal id of the field info
+            </param>
+            <param name="name">the int name
+            </param>
+            <param name="type">the type
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldInfo.#ctor(System.Int32,System.String,com.latencybusters.pdm.PDMFieldType,System.Int32,System.Boolean)">
+            <summary> Constructor used for single value fixed-length string fields
+            with String names
+            </summary>
+            <param name="id">the internal id of the field info
+            </param>
+            <param name="name">the string name
+            </param>
+            <param name="type">the type
+            </param>
+            <param name="fixedStrLen">the fixed string length for this field
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldInfo.#ctor(System.Int32,System.Int32,com.latencybusters.pdm.PDMFieldType,System.Int32,System.Boolean)">
+            <summary> Constructor used for single value fixed-length string fields
+            with int names
+            </summary>
+            <param name="id">the internal id of the field info
+            </param>
+            <param name="name">the int name
+            </param>
+            <param name="type">the type
+            </param>
+            <param name="fixedStrLen">the fixed string length for this field
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldInfo.#ctor(System.Int32,System.String,System.Int32,com.latencybusters.pdm.PDMFieldType,System.Int32,System.Boolean,System.Int32)">
+            <summary> General constructor used for any single value or array field
+            of fixed length or variable length with string or int names
+            </summary>
+            <param name="id">the internal id of the field info
+            </param>
+            <param name="strName">the string name
+            </param>
+            <param name="intName">the int name
+            </param>
+            <param name="type">the type
+            </param>
+            <param name="fixedStrLen">the fixed string length for this field
+            </param>
+            <param name="required">whether or not the field is required
+            </param>
+            <param name="numElements">the number of array elements for fixed-size arrays or 0
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldInfo.toBytes(com.latencybusters.pdm.PDMSerializer)">
+            <summary> Serializes this object to a new byte array</summary>
+            <param name="ser">the PDMSerializer
+            </param>
+            <returns> the new byte array
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldInfo.toBytes(com.latencybusters.pdm.PDMSerializer,System.Byte[],System.Int32)">
+            <summary> Serializes this object to an existing byte array at position</summary>
+            <param name="ser">the PDMSerializer
+            </param>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position in the byte array
+            </param>
+            <returns> the updated position in the byte 
+            array after serializing this object
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldInfo.parse(com.latencybusters.pdm.PDMDeserializer,System.Byte[])">
+            <summary> Parses the byte array into this object</summary>
+            <param name="deser">the PDMDeserializer
+            </param>
+            <param name="ba">the byte array
+            </param>
+            <returns> the updated position in the byte array after
+            parsing this object
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldInfo.parse(com.latencybusters.pdm.PDMDeserializer,System.Byte[],System.Int32)">
+            <summary> Parses the byte array at position into this object</summary>
+            <param name="deser">the PDMDeserializer
+            </param>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position in the byte array
+            </param>
+            <returns> the updated position in the byte array after
+            parsing this object
+            </returns>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldInfo.Id">
+            <summary> Gets the internal Id of the PDMFieldInfo
+            </summary>
+            <value> the int id
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldInfo.Required">
+            <summary> Gets the boolean Required property of the PDMFieldInfo
+            </summary>
+            <value> the bool
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldInfo.Fixed">
+            <summary> Gets the boolean Fixed property of the PDMFieldInfo
+            </summary>
+            <value> the bool
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldInfo.Len">
+            <summary> Gets the int Len property of the PDMFieldInfo
+            </summary>
+            <value> the int length in bytes
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldInfo.FixedStrLen">
+            <summary> Gets the int FixedStrLen property of the PDMFieldInfo
+            </summary>
+            <value> the fixed string length in number of string characters
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldInfo.NumElements">
+            <summary> Gets the int NumElements property of the PDMFieldInfo
+            </summary>
+            <value> the number of array elements
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldInfo.Type">
+            <summary> Gets the PDMFieldType Type property of the PDMFieldInfo
+            </summary>
+            <value> the type
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldInfo.Array">
+            <summary> Gets the bool Array property of the PDMFieldInfo
+            </summary>
+            <value> the bool that indicates if the field info is an array type
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldInfo.StrName">
+            <summary> Gets the String StrName property of the PDMFieldInfo
+            </summary>
+            <value> the string name
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldInfo.IntName">
+            <summary> Gets the int IntName property of the PDMFieldInfo
+            </summary>
+            <value> the int name
+            </value>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMFieldIterator">
+            <summary> The PDMFieldIterator is used to iterate through each {@link PDMField}
+            in a {@link PDMMessage}.  Check isValueSet() before accessing its value
+            to determine if the {@link PDMField} has been set. 
+            </summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldIterator.#ctor(System.Collections.Generic.List{com.latencybusters.pdm.PDMField})">
+            <summary> Internal constructor called from a {@link PDMMessage}</summary>
+            <param name="fieldList">
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldIterator.MoveNext">
+            <summary>
+            Moves to the next field
+            </summary>
+            <returns> a bool indicating whether or not it was able to move to the next field
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldIterator.Reset">
+            <summary> Resets the iterator
+            </summary>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldIterator.Current">
+            <summary> The iterator's current object (must be casted to a PDMField)
+            </summary>
+            <value> the current PDMField as an object
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMFieldIterator.CurrentField">
+            <summary> The iterator's current object (casted to a PDMField)
+            </summary>
+            <value> the current PDMField
+            </value>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMFieldType">
+            <summary> PDMFieldType enumeration used when adding field information to a PDMDefinition.</summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.FIRST">
+            <summary> The int index of the first valid field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.LAST">
+            <summary> The int index of the last valid field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.UNKNOWN">
+            <summary> An unknown field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.BOOLEAN">
+            <summary> The BOOLEAN PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.INT8">
+            <summary> The INT8 PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.UINT8">
+            <summary> The UINT8 PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.INT16">
+            <summary> The INT16 PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.UINT16">
+            <summary> The UINT16 PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.INT32">
+            <summary> The INT32 PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.UINT32">
+            <summary> The UINT32 PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.INT64">
+            <summary> The INT64 PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.UINT64">
+            <summary> The UINT64 PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.FLOAT">
+            <summary> The FLOAT PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.DOUBLE">
+            <summary> The DOUBLE PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.DECIMAL">
+            <summary> The DECIMAL PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.TIMESTAMP">
+            <summary> The TIMESTAMP PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.FIX_STRING">
+            <summary> The FIX_STRING PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.STRING">
+            <summary> The STRING PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.FIX_UNICODE">
+            <summary> The FIX_UNICODE PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.UNICODE">
+            <summary> The UNICODE PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.BLOB">
+            <summary> The BLOB PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.MESSAGE">
+            <summary> The MESSAGE PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.BOOLEAN_ARR">
+            <summary> The BOOLEAN array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.INT8_ARR">
+            <summary> The INT8 array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.UINT8_ARR">
+            <summary> The UINT8 array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.INT16_ARR">
+            <summary> The INT16 array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.UINT16_ARR">
+            <summary> The UINT16 array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.INT32_ARR">
+            <summary> The INT32 array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.UINT32_ARR">
+            <summary> The UINT32 array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.INT64_ARR">
+            <summary> The INT64 array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.UINT64_ARR">
+            <summary> The UINT64 array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.FLOAT_ARR">
+            <summary> The FLOAT array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.DOUBLE_ARR">
+            <summary> The DOUBLE array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.DECIMAL_ARR">
+            <summary> The DECIMAL array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.TIMESTAMP_ARR">
+            <summary> The TIMESTAMP array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.FIX_STRING_ARR">
+            <summary> The FIX_STRING array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.STRING_ARR">
+            <summary> The STRING array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.FIX_UNICODE_ARR">
+            <summary> The FIX_UNICODE array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.UNICODE_ARR">
+            <summary> The UNICODE array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.BLOB_ARR">
+            <summary> The BLOB array PDM field type
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMFieldType.MESSAGE_ARR">
+            <summary> The MESSAGE array PDM field type
+            </summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldType.getType">
+            <summary> Gets the short indicating the type
+            </summary>
+            <returns> the short
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldType.isFixed">
+            <summary> Gets the bool indicating if the field type is fixed length
+            </summary>
+            <returns> the bool
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldType.getTypeStr">
+            <summary> Gets the String name of the type
+            </summary>
+            <returns> the string name
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldType.getTypeLen">
+            <summary> Gets the length in bytes of the type
+            </summary>
+            <returns> the length in bytes
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldType.isArray">
+            <summary> Gets the bool indicating if the field type is an array type
+            </summary>
+            <returns> the bool
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldType.#ctor(System.Int16,System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary> The internal constructor used for the different enums</summary>
+            <param name="type">the short representing the field type
+            </param>
+            <param name="typeStr">the string name of the field type
+            </param>
+            <param name="len">the known length in bytes of the type or 0
+            </param>
+            <param name="isfixed">whether or not the field type is fixed length
+            </param>
+            <param name="array">whether or not the field type is an array type
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMFieldType.getType(System.Int16)">
+            <summary> Gets the PDMFieldType object from the short type passed in
+            </summary>
+            <param name="type">the short indicating the type
+            </param>
+            <returns> the PDMFieldType object or the UNKNOWN type
+            </returns>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMMessage">
+            <summary> A PDM message consists of a definition and the corresponding
+            optional and required fields as specified by the definition.
+            Use {@link PDMMessage#toBytes()} to serialize a message to bytes or
+            {@link PDMMessage#parse(byte[])} to deserialize a message from bytes. 
+            </summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMMessage.VERSION_POLICY_EXACT">
+            <summary> a const variable for "exact" versioning policy
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMMessage.VERSION_POLICY_BEST">
+            <summary> a const variable for "best" versioning policy
+            </summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.#ctor">
+            <summary> Empty constructor can be used when the {@link PDMDefinition}
+            is not available.
+            </summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.#ctor(com.latencybusters.pdm.PDMDefinition)">
+            <summary> Creates a message from a finalized {@link PDMDefinition}</summary>
+            <param name="definition">The finalized {@link PDMDefinition}
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary> Creates a message from a finalized definition by
+            looking it up in the {@link PDMDefinitionCache} by the id passed
+            </summary>
+            <param name="definitionId">The definition id to lookup in the cache
+            </param>
+            <param name="versionMajor">The definition major version used in the lookup
+            </param>
+            <param name="versionMinor">The definition minor version used in the lookup
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFields">
+            <summary> Gets the list of PDMFields in this message
+            </summary>
+            <returns> the list of PDMFields
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.updateOptOrVarFlag(com.latencybusters.pdm.PDMField)">
+            <summary> Used internally to update the flag if needed to indicate that the message contains at least
+            one optional or variable field
+            </summary>
+            <param name="field">the field to check
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.isFieldValueSet(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary>
+            Checks to see if the field's value is set
+            </summary>
+            <param name="fieldInfo">the corresponding field info handle</param>
+            <returns>true if the field value has been set or false if it has not</returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.createFieldIterator">
+            <summary> Creates a new {@link PDMFieldIterator} to traverse
+            through the {@link PDMField}s
+            </summary>
+            <returns> a new PDMFieldIterator object
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.loadDefinition(com.latencybusters.pdm.PDMDefinition)">
+            <summary> Loads the {@link PDMDefinition} passed and initializes the
+            {@link PDMMessage}	
+            </summary>
+            <param name="definition">the PDMDefinition to load
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.removeFieldValue(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Removes the field value (corresponding to the passed field info) from the message
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo of the field to remove
+            </param>
+            <returns>this PDMMessage for chaining
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Boolean)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.Boolean. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the bool value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.SByte)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.INT8. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the sbyte value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Byte)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.UINT8. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the byte value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Int16)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.INT16. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the short value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.UInt16)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.UINT16. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the ushort value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Int32)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.INT32. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the int value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.UInt32)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.UINT32. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the uint value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Int64)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle that corresponition and should be of type PDMFieldType.INT64. </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the long value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.UInt64)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle that corresponition and should be of type PDMFieldType.UINT64. </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the ulong value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Single)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.FLOAT. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the float value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Double)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.DOUBLE. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the double value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,com.latencybusters.pdm.PDMDecimal)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.DECIMAL. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the PDMDecimal value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,com.latencybusters.pdm.PDMTimestamp)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.Timestamp. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the PDMTimestamp value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.String)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.FIX_STRING or PDMFieldType.STRING
+            or PDMFieldType.FIX_UNICODE or PDMFieldType.UNICODE. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the String value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,com.latencybusters.pdm.PDMMessage)">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle
+            and should be of type PDMFieldType.MESSAGE.
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the PDMMessage value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Boolean[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.BOOLEAN_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the bool array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.SByte[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.INT8_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the sbyte array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Byte[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.UINT8_ARR or PDMFieldType.BLOB. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the byte array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Int16[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.INT16_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the short array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.UInt16[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.UINT16_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the ushort array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Int32[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.INT32_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the int array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.UInt32[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.UINT32_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the uint array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Int64[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.INT64_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the long array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.UInt64[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.UINT64_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the ulong array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Single[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.FLOAT_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the float array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Double[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.DOUBLE_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the double array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,com.latencybusters.pdm.PDMDecimal[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.DECIMAL_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the PDMDecimal array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,com.latencybusters.pdm.PDMTimestamp[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.TIMESTAMP_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the PDMTimestamp array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.String[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.FIX_STRING_ARR or PDMFieldType.STRING_ARR or
+            PDMFieldType.FIX_UNICODE_ARR or PDMFieldType.UNICODE_ARR. 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the String array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,System.Byte[][])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.BLOB_ARR.
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the byte[] array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.setFieldValue(com.latencybusters.pdm.PDMFieldInfo,com.latencybusters.pdm.PDMMessage[])">
+            <summary> Sets the field value in the message using the {@link PDMFieldInfo} handle 
+            and should be of type PDMFieldType.MESSAGE_ARR.
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <param name="newValue">the PDMMessage array value
+            </param>
+            <returns> a reference to this {@link PDMMessage} for chaining setFieldValue calls
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValue(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets a field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition}
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> The value as an Object that can be casted.
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsBoolean(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to a Boolean
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsInt8(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to a SByte
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsUInt8(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to a Byte
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsInt16(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to Int16
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsUInt16(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to UInt16 
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsInt32(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to Int32
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsUInt32(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to UInt32
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsInt64(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to Int64
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsUInt64(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to UInt64
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsFloat(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to Single
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsDouble(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to Double
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsDecimal(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to {@link PDMDecimal}
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsTimestamp(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to {@link PDMTimestamp}
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsString(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to String
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsBlob(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to byte[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsMessage(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to {@link PDMMessage}
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsBooleanArray(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to boolean[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsInt8Array(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to sbyte[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsUInt8Array(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to byte[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsInt16Array(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to short[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsUInt16Array(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to ushort[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsInt32Array(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to int[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsUInt32Array(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to uint[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsInt64Array(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to long[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsUInt64Array(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to ulong[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsFloatArray(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to float[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsDoubleArray(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to double[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsDecimalArray(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to {@link PDMDecimal}[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsTimestampArray(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to {@link PDMTimestamp}[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsStringArray(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to String[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsBlobArray(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to an array of blobs
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.getFieldValueAsMessageArray(com.latencybusters.pdm.PDMFieldInfo)">
+            <summary> Gets the field value by using the {@link PDMFieldInfo} handle from
+            the {@link PDMDefinition} and attempts to cast it to {@link PDMMessage}[]
+            </summary>
+            <param name="fieldInfo">the PDMFieldInfo handle
+            </param>
+            <returns> the value
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.toBytes">
+            <summary> Serializes the message to a new byte array</summary>
+            <returns> the new byte array
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.toBytes(com.latencybusters.pdm.PDMSerializer)">
+            <summary> Serializes the message to a new byte array</summary>
+            <param name="ser">the PDMSerializer to use
+            </param>
+            <returns> the new byte array
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.toBytes(com.latencybusters.pdm.PDMSerializer,System.Byte[],System.Int32)">
+            <summary> Serializes the message to an existing byte array at position</summary>
+            <param name="ser">the PDMSerializer to use
+            </param>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <returns> the updated position in the byte array after serializing
+            this object
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.parse(System.Byte[])">
+            <summary> Deserializes a message from a byte array</summary>
+            <param name="ba">the byte array
+            </param>
+            <returns> the updated position in the byte array after parsing
+            this object
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.parse(System.Byte[],System.Int32)">
+            <summary> Deserializes a message from a byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <returns> the updated position in the byte array after parsing
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessage.parse(com.latencybusters.pdm.PDMDeserializer,System.Byte[],System.Int32)">
+            <summary> Deserializes a message from a byte array at position</summary>
+            <param name="deser">the PDMDeserializer to use
+            </param>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <returns> the updated position in the byte array after parsing
+            </returns>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMMessage.Definition">
+            <summary> Gets the PDMDefinition property of the message
+            </summary>
+            <value> the definition for this message
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMMessage.Serializer">
+            <summary> Gets or sets the PDMSerializer property of the message
+            </summary>
+            <value> the serializer for this message
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMMessage.Deserializer">
+            <summary> Gets or sets the PDMDeserializer property of the message
+            </summary>
+            <value> the deserializer for this message
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMMessage.VersionPolicy">
+            <summary> Gets or sets the VersionPolicy property of the message
+            </summary>
+            <value> the version policy of the message which should be VERSION_POLICY_BEST or VERSION_POLICY_EXACT
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMMessage.IncludeDefinition">
+            <summary> Returns whether the {@link PDMDefinition} will be included
+            when serializing to bytes (defaults to false)
+            </summary>
+            <value> the bool indicating whether to include the definition or not
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMMessage.UseMsgDefIfNeeded">
+            <summary> Gets or sets whether an included {@link PDMDefinition} should be
+            parsed and used instead of the previously set {@link PDMDefinition}
+            in cases where the two ids, major versions, and minor versions
+            do not match exactly (defaults to false)
+            </summary>
+            <value>the bool value
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMMessage.TryToLoadDefFromCache">
+            <summary> Gets or sets whether or not an attempt will be made when parsing a message to try to automatically
+            loaded a {@link PDMDefinition} from the {@link PDMDefinitionCache} if the one currently set
+            doesn't exactly match the one in the incoming message; the current one will be replaced
+            (defaults to false)
+            </summary>
+            <value> the bool value
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMMessage.MessageLen">
+            <summary> Gets the message length in bytes which is known after
+            it has been serialized
+            </summary>
+            <value> the message length in bytes
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMMessage.MsgDirty">
+            <summary> Gets or sets the value of the MsgDirty flag.  When a 
+            message has been serialized and then changed, we need to be able to
+            re-serialize the message before updating the array that it is in.  A message
+            is "dirty" if it is modified after it has been serialized.
+            </summary>
+            <value>the bool value
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMMessage.DataSegmentLen">
+            <summary> Gets the length in bytes of the data segment
+            </summary>
+            <value> the data segment length in bytes
+            </value>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMMessageHeader">
+            <summary> The message header is the class used internally to represent the
+            header of a PDM message.
+            </summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessageHeader.toBytes(com.latencybusters.pdm.PDMSerializer)">
+            <summary> Serializes this object to a new byte array</summary>
+            <param name="ser">
+            </param>
+            <returns> the new byte array
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessageHeader.toBytes(com.latencybusters.pdm.PDMSerializer,System.Byte[],System.Int32)">
+            <summary> Serializes this object to an existing byte array at position</summary>
+            <param name="ser">
+            </param>
+            <param name="ba">
+            </param>
+            <param name="pos">
+            </param>
+            <returns> the updated position in the byte array after serializing
+            this object
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMMessageHeader.parse(com.latencybusters.pdm.PDMDeserializer,System.Byte[],System.Int32)">
+            <summary> Parses the byte array at position into this object</summary>
+            <param name="deser">
+            </param>
+            <param name="ba">
+            </param>
+            <param name="pos">
+            </param>
+            <returns> the updated position in the byte array after parsing
+            this object
+            </returns>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMOffsetTable">
+            <summary> The PDMOffsetTable is used internally by a {@link PDMMessage}
+            when optional or variable fields are set and then is
+            written on the wire as field id and offset into the data segment.
+            </summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMOffsetTable.#ctor(System.Int32)">
+            <summary> Constructor takes the total number of fields from the definition
+            including: REQ_FIX, REQ_VAR, OPT_VAR, OPT_FIX
+            </summary>
+            <param name="numFields">
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMOffsetTable.clear">
+            <summary> Clears all offsets back to -1</summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMOffsetTable.set(System.Int32,System.Int32)">
+            <summary> Sets the field id to a specific offset</summary>
+            <param name="fieldId">
+            </param>
+            <param name="offset">
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMOffsetTable.get(System.Int32)">
+            <summary> Gets the specific offset for a field id or -1</summary>
+            <param name="fieldId">
+            </param>
+            <returns> the offset
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMOffsetTable.isSet(System.Int32)">
+            <summary> Returns true if the offset for a field id is not -1</summary>
+            <param name="fieldId">
+            </param>
+            <returns> if the offset is set
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMOffsetTable.toBytes(com.latencybusters.pdm.PDMSerializer)">
+            <summary> Serializes the offset table to a new byte array</summary>
+            <param name="ser">
+            </param>
+            <returns> the new byte array
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMOffsetTable.toBytes(com.latencybusters.pdm.PDMSerializer,System.Byte[],System.Int32)">
+            <summary> Serializes the offset table to an existing byte array</summary>
+            <param name="ser">
+            </param>
+            <param name="ba">
+            </param>
+            <param name="pos">
+            </param>
+            <returns> the updated position after serializing this object
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMOffsetTable.parse(com.latencybusters.pdm.PDMDeserializer,System.Byte[],System.Int32,System.Int32)">
+            <summary> Parses an existing byte array into this object</summary>
+            <param name="deser">
+            </param>
+            <param name="ba">
+            </param>
+            <param name="pos">
+            </param>
+            <param name="len">
+            </param>
+            <returns> the updated position after parsing this object
+            </returns>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMOffsetTable.MinOffsetIndex">
+            <summary> Returns the index of the field with the lowest offset</summary>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMOffsetTable.NumSet">
+            <summary> Gets the total number of set field offsets</summary>
+            <returns> the number of field offsets that are set
+            </returns>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMOffsetTable.Size">
+            <summary> The total size of the offset table (including unset fields)</summary>
+            <returns> the size of the offset table (number passed to the constructor)
+            </returns>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMOffsetTable.Offsets">
+            <summary> Gets the array of offsets where index is the field id</summary>
+            <returns> the offset array
+            </returns>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMSection">
+            <summary> The PDMSection class is an internal class used as a wrapper
+            around the byte buffer to store a {@link PDMField}'s value
+            </summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMSection.SECTION_NONE">
+            <summary> The section type representing no section
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMSection.SECTION_REQ_FIX">
+            <summary> The section type representing the required-fixed section
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMSection.SECTION_REQ_VAR">
+            <summary> The section type representing the required-variable section
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMSection.SECTION_OPT_FIX">
+            <summary> The section type representing the optional-fixed section
+            </summary>
+        </member>
+        <member name="F:com.latencybusters.pdm.PDMSection.SECTION_OPT_VAR">
+            <summary> The section type representing the optional-variable section
+            </summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSection.#ctor(System.Int16)">
+            <summary> The type of section identifying REQ or OPT and FIX or VAR</summary>
+            <param name="type">the short indicating the section type
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSection.getType">
+            <summary> Gets the type of section identifying REQ or OPT and FIX or VAR
+            </summary>
+            <returns>the short indicating the section type
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSection.setType(System.Int16)">
+            <summary> Sets the type of section identifying REQ or OPT and FIX or VAR</summary>
+            <param name="type">the short indicating the section type
+            </param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSection.createBuffer(System.Int32)">
+            <summary> Creates and sets a new byte buffer of the given length</summary>
+            <param name="len">the length in bytes of the new byte array
+            </param>
+            <returns> the new byte array
+            </returns>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMSection.Buffer">
+            <summary> Gets or sets the byte array to store the field value
+            </summary>
+            <value>the byte array
+            </value>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMSegmentHeader">
+            <summary> The chained segment header is the internal PDM header class
+            used by the different PDM segments of a message.  It includes
+            a next header type as well as the length of its corresponding
+            segment.
+            </summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSegmentHeader.clear">
+            <summary> Clears the header so it can be reused without creating
+            a new one
+            </summary>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSegmentHeader.toBytes(com.latencybusters.pdm.PDMSerializer)">
+            <summary> Serializes this object to a new byte array</summary>
+            <param name="ser">
+            </param>
+            <returns> the new byte array
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSegmentHeader.toBytes(com.latencybusters.pdm.PDMSerializer,System.Byte[],System.Int32)">
+            <summary> Serializes this object to an existing byte array at position</summary>
+            <param name="ser">
+            </param>
+            <param name="ba">
+            </param>
+            <param name="pos">
+            </param>
+            <returns> the updated position in the byte array after serializing
+            this object
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSegmentHeader.parse(com.latencybusters.pdm.PDMDeserializer,System.Byte[],System.Int32)">
+            <summary> Parses the byte array at position into this object</summary>
+            <param name="deser">
+            </param>
+            <param name="ba">
+            </param>
+            <param name="pos">
+            </param>
+            <returns> the updated position in the byte array after parsing
+            this object
+            </returns>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMSerializer">
+            <summary> Used to serialize a type into an array of bytes</summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeBoolean(System.Byte[],System.Int32,System.Boolean)">
+            <summary> Writes the boolean as 1 byte into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="b">the bool to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeByte(System.Byte[],System.Int32,System.SByte)">
+            <summary> Writes the byte as 1 byte into the byte array at position</summary>
+            <param name="byteArr">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="b">the sbyte to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeUByte(System.Byte[],System.Int32,System.Byte)">
+            <summary> Writes the unsigned byte (short) as 1 byte into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="b">the byte to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeShort(System.Byte[],System.Int32,System.Int16)">
+            <summary>    * Writes the short as 2 bytes into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="s">the short to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeUShort(System.Byte[],System.Int32,System.UInt16)">
+            <summary> Writes the unsigned short (int) as 2 bytes into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="s">the ushort to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeInt(System.Byte[],System.Int32,System.Int32)">
+            <summary> Writes the int as 4 bytes into the byte array at position </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="i">the int to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeUInt(System.Byte[],System.Int32,System.UInt32)">
+            <summary> Writes the unsigned int (long) as 4 bytes into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="i">the uint to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeLong(System.Byte[],System.Int32,System.Int64)">
+            <summary> Writes the long as 8 bytes into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="l">the long to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeULong(System.Byte[],System.Int32,System.UInt64)">
+            <summary> Writes the ulong as 8 bytes into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="l">the ulong to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeFloat(System.Byte[],System.Int32,System.Single)">
+            <summary> Writes the float as 4 bytes into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="f">the float to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeDouble(System.Byte[],System.Int32,System.Double)">
+            <summary> Writes the double as 8 bytes into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="d">the double to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeDecimal(System.Byte[],System.Int32,com.latencybusters.pdm.PDMDecimal)">
+            <summary> Writes the {@link PDMDecimal} as 9 bytes into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="dec">the PDMDecimal to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeTimestamp(System.Byte[],System.Int32,com.latencybusters.pdm.PDMTimestamp)">
+            <summary> Writes the {@link PDMTimestamp} as 8 bytes into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="ts">the PDMTimestamp to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeString(System.Byte[],System.Int32,System.String)">
+            <summary> Writes the non-null String into the byte array at position
+            and appends a 0 byte after the String
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="s">the String to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeUnicode(System.Byte[],System.Int32,System.String,System.String)">
+            <summary> Writes the non-null unicode String into the byte array at position
+            and appends a 0 byte after the String
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="s">the Unicode String to write
+            </param>
+            <param name="charSet">the character set
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+            <throws>  UnsupportedEncodingException </throws>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeUnicode(System.Byte[],System.Int32,System.String)">
+            <summary> Writes the non-null unicode String into the byte array
+            as UTF-8 at position and appends a 0 byte after the String
+            </summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="s">the Unicode String to write
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+            <throws>  UnsupportedEncodingException </throws>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMSerializer.writeByteArray(System.Byte[],System.Int32,System.Byte[])">
+            <summary> Copies the source byte array into the byte array at position</summary>
+            <param name="ba">the byte array
+            </param>
+            <param name="pos">the starting position
+            </param>
+            <param name="sourceByteArray">the source byte array
+            </param>
+            <returns> the updated position in the byte array after the write
+            </returns>
+        </member>
+        <member name="T:com.latencybusters.pdm.PDMTimestamp">
+            <summary> A representation of a PDMTimestamp with the number of seconds and microseconds
+            since the epoch
+            </summary>
+            <author>  jfugitt
+            
+            </author>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMTimestamp.#ctor(System.Int32,System.Int32)">
+            <summary>
+            A representation of a PDMTimestamp with the number of seconds and microseconds
+            since the epoch
+            </summary>
+            <param name="seconds">Number of seconds/microseconds since the epoch</param>
+            <param name="microseconds">Number of seconds/microseconds since the epoch</param>
+        </member>
+        <member name="M:com.latencybusters.pdm.PDMTimestamp.ToString">
+            <summary> concatenates the seconds and microseconds into a string
+            </summary>
+            <returns> the String representing this PDMTimestamp
+            </returns>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMTimestamp.Seconds">
+            <summary> Gets the int Seconds property
+            </summary>
+            <value> the int representing total seconds
+            </value>
+        </member>
+        <member name="P:com.latencybusters.pdm.PDMTimestamp.Microseconds">
+            <summary> Gets the int Microseconds property
+            </summary>
+            <value> the int representing microseconds
+            </value>
+        </member>
+    </members>
+</doc>

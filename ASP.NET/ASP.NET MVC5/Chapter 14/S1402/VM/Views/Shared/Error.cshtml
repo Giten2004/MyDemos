@@ -1,0 +1,13 @@
+﻿@model VM.Mvc.Extensions.ExtendedHandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<hgroup class="title">
+    <h1 class="error">@Model.ErrorMessage.</h1>
+    <ul>
+        <li><span class="label">Exception Type</span>: @Model.Exception.GetType().FullName</li>
+        <li><span class="label">StackTrace</span>: @Model.Exception.StackTrace</li>
+    </ul>
+</hgroup>

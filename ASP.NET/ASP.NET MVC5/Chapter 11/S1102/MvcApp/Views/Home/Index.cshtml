@@ -1,0 +1,19 @@
+﻿<html>
+<head>
+    <title>ActionResults</title>
+    <link type="text/css" rel="Stylesheet" href="@Url.Action("Css")" />
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        string theme = ViewBag.Theme.ToString();
+        @Html.RadioButton("theme", "Default", theme == "Default")
+        <span>默认主题（宋体）</span><br />
+        @Html.RadioButton("theme", "Theme1", theme == "Theme1")
+        <span>主题1（黑体）</span><br />
+        @Html.RadioButton("theme", "Theme2", theme == "Theme2")
+        <span>主题2（楷体）</span><br />
+        <input type="submit" value="保存" />
+    }
+</body>
+</html>

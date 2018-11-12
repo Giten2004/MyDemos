@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="./scripts/knockout-3.3.0.js"></script>
+    <title>knockout first demo</title>
+</head>
+<body>
+    <h3>Details</h3>
+    <p>First name: <span data-bind="text: firstName"></span></p>
+    <p>First name: <input data-bind="value: firstName"/></p>
+
+
+    <p>Last name: <span data-bind="text: lastName"></span></p>
+    <p>Last name: <input data-bind="value: lastName" /></p>
+
+    <script type="text/javascript">
+        var viewModel = {
+            firstName: ko.observable("Bert"),
+            lastName: ko.observable("Smith")
+        };
+
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@model LoginInfo
+<html>
+<head>
+    <title>用户登录</title>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.8.3.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+    <script type="text/javascript">
+            function login(data) {
+                if (data.ExceptionType) {
+                    alert(data.Message);
+                }
+                else {
+                    alert("认证成功");
+                }
+            }
+    </script>
+</head>
+<body>
+    @{
+        AjaxOptions options = new AjaxOptions { OnSuccess = "login" };
+    }
+    @using (Ajax.BeginForm(options))
+    {
+        @Html.EditorForModel()
+        <input type="submit" value="登录" />
+    }
+</body>
+</html>

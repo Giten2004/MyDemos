@@ -1,0 +1,24 @@
+﻿@model MvcApp.Models.ShoppingCart
+<html>
+<head>
+    <title>用户登录</title>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.8.3.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+</head>
+<body>
+    @using (Ajax.BeginForm("ProcessOrder", new AjaxOptions()))
+    {
+        for (int i = 0; i < Model.Count; i++)
+        {
+            <div>
+                @Html.HiddenFor(m => m[i].Id)
+                @Html.HiddenFor(m => m[i].Name)
+
+                @Html.DisplayFor(m => m[i].Name):
+                @Html.EditorFor(m => m[i].Quantity)
+            </div>
+        }
+        <input type="submit" value="提交订单" />
+    }
+</body>
+</html>

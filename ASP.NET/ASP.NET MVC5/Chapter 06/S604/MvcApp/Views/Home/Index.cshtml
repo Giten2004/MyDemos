@@ -1,0 +1,23 @@
+﻿@model MvcApp.Models.CommonHttpHeaders
+<html>
+<head>
+    <title>HTTP报头列表</title>
+    <link rel="stylesheet" href="~/content/bootstrap.css" />
+    <link rel="stylesheet" href="~/content/site.css" />
+</head>
+<body>
+    <table class="table table-bordered">
+        <tr><th>Name</th><th>Value</th></tr>
+        <tr><td>Accept</td><td>@Model.Accept</td></tr>
+        <tr><td>AcceptCharset</td><td>@Model.AcceptCharset</td></tr>
+        <tr><td>AcceptEncoding</td><td>@Model.AcceptEncoding</td></tr>
+        <tr><td>AcceptLanguage</td><td>@Model.AcceptLanguage</td></tr>
+        <tr><td>Connection</td><td>@Model.Connection</td></tr>
+        <tr><td>Host</td><td>@Model.Host</td></tr>
+        <tr><td>UserAgent</td><td>@Model.UserAgent</td></tr>
+    </table>
+</body>
+</html>
+
+
+

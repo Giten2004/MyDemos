@@ -1,0 +1,16 @@
+﻿@model Person
+<html>
+<head>
+    <title>编辑个人信息</title>
+    <link rel="stylesheet" href="/Content/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/site.css" />
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.EditorForModel()
+        <input type="submit" value="保存" />
+    }
+</body>
+
+</html>

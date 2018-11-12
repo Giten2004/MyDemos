@@ -1,0 +1,7 @@
+Product= UME,LBM,UMDRO
+
+Organization= Liquid Capital Markets Limited UME
+
+Expiration-Date= never
+
+License-Key= 51D1 FBC0 D561 F076

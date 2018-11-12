@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FIXML xmlns="www.eurexchange.com/technology">
+  <TrdCaptRpt BizDt="2015-05-28" Ccy="EUR" LastMkt="XEUR" LastPx="5450" LastQty="100" LastUpdateTm="2015-05-28T14:57:55.273+00:00" MLegRptTyp="1" MtchID="28145755" RptID="4SA0000000000" RptTyp="0" TransTyp="0" TrdDt="2013-12-18" TrdHandlInst="0" TrdTyp="0" TrnsfrRsn="000">
+    <Hdr SID="ECAG" Snt="2015-05-28T14:57:55.316+00:00" TID="ABCFR"/>
+    <Pty ID="ABCFR" R="4"/>
+    <Pty ID="ABCFR" R="1"/>
+    <Pty ID="A1" R="38"/>
+    <Pty ID="TRD001" R="12"/>
+    <Pty ID="ABCFRTRD001" R="11"/>
+    <Instrmt MMY="201512" Sym="FDAX"/>
+    <TrdRegTS TS="2015-05-28T14:57:55.236+00:00" Typ="2"/>
+    <TrdRegTS TS="2015-05-28T14:57:55.700+00:00" Typ="1"/>
+    <TrdRegTS TS="2015-05-28T14:57:55.273+00:00" Typ="7"/>
+    <RptSide AgrsrInd="N" AllocInd="0" OrdCat="1" PosEfct="O" Side="1" TrdID="28145756" Txt1="ADJBTEXT47" Txt2="ADJBCUST47" Txt3="ADJBMON47">
+      <TrdRegTS TS="2015-05-28T14:57:55.100+00:00" Typ="8"/>
+      <Qty Long="0" Short="0" Typ="ALC"/>
+      <Qty Long="100" Short="0" Typ="PA"/>
+      <Qty Long="100" Short="0" Typ="TOT"/>
+      <TrdRptOrdDetl ClOrdID="2837" OrdID="281457551001" OrdStat="2" OrdTyp="2">
+        <OrdQty Qty="100"/>
+      </TrdRptOrdDetl>
+      <ReltdPos ID="2OB" Src="3"/>
+    </RptSide>
+  </TrdCaptRpt>
+</FIXML>

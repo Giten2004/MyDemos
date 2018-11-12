@@ -1,0 +1,24 @@
+﻿@model Person
+<html>
+<head>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")">
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jQuery.validator.extend.js")">
+    </script>
+    <style type="text/css">
+        .field-validation-error {
+            color: Red;
+        }
+    </style>
+    <title>编辑个人信息</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.EditorForModel()
+        <input type="submit" value="保存" />
+    }
+</body>
+</html>

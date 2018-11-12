@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApacheQpidDemo", "ApacheQpidDemo\ApacheQpidDemo.csproj", "{61E774B3-510B-4D1E-853D-115362DA34FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{6D2B1E41-4BA3-4540-B5DA-304B8D5DA332}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EurexClearingAMQP", "EurexClearingAMQP\EurexClearingAMQP.csproj", "{41B4B718-0027-404B-AB41-5E0BCBA461A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61E774B3-510B-4D1E-853D-115362DA34FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E774B3-510B-4D1E-853D-115362DA34FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E774B3-510B-4D1E-853D-115362DA34FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E774B3-510B-4D1E-853D-115362DA34FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41B4B718-0027-404B-AB41-5E0BCBA461A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B4B718-0027-404B-AB41-5E0BCBA461A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41B4B718-0027-404B-AB41-5E0BCBA461A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41B4B718-0027-404B-AB41-5E0BCBA461A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

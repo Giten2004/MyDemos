@@ -1,0 +1,23 @@
+﻿@model ModelStateDictionary
+<html>
+<head>
+    <title>ModelState</title>
+    <link rel="stylesheet" href="~/content/bootstrap.css" />
+    <link rel="stylesheet" href="~/content/site.css" />
+</head>
+<body>
+    <table class="table table-bordered">
+        <tr><th>Key</th><th>Value</th></tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Value.Value.ConvertTo(typeof(string))</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
+
+
+
